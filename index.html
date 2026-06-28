@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dawood RCC Pipe | Pakistan's Infrastructure Since 1967</title>
+<meta name="description" content="Pakistan's most trusted RCC concrete pipe manufacturer. 57+ years, Karachi. NHA, WAPDA, CDA approved. Exporting to Middle East, Africa, Central Asia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root{
+  --gold:#C4881B;--gd:#A3710F;--gl:#E5A832;
+  --g08:rgba(196,136,27,.08);--g18:rgba(196,136,27,.18);--g35:rgba(196,136,27,.35);
+  --dark:#2B2D33;--white:#FFFFFF;
+  --lit:rgba(255,255,255,.9);--dim:rgba(255,255,255,.52);--faint:rgba(255,255,255,.22);
+  --dbdr:rgba(196,136,27,.2);
+  --ease:cubic-bezier(.4,0,.2,1);--spring:cubic-bezier(.34,1.56,.64,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.08}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font-family:inherit;cursor:pointer;border:none}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* PROGRESS */
+#prog{position:fixed;top:0;left:0;right:0;z-index:9999;height:2px;width:0;background:linear-gradient(90deg,var(--gd),var(--gl))}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:.3rem 3rem;background:#ffffff;box-shadow:0 2px 24px rgba(0,0,0,.10);transition:all .32s var(--ease);overflow:visible}
+nav.on{background:#ffffff;box-shadow:0 2px 28px rgba(0,0,0,.14);padding:.2rem 3rem}
+.logo{display:flex;align-items:center;gap:.7rem}
+.logo-icon{height:110px;width:110px;object-fit:cover;border-radius:12px;display:block;transition:height .3s,opacity .2s;flex-shrink:0;position:relative;z-index:901}
+.logo-text{display:flex;flex-direction:column}
+.lname{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:700;color:#111111;display:block;line-height:1.2}
+.lsub{font-size:.58rem;color:rgba(43,45,51,.82);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.logo:hover .logo-icon{opacity:.85}
+nav.on .logo-icon{height:90px;width:90px}
+.nl{list-style:none;display:flex;align-items:center}
+.nl a{font-size:.77rem;font-weight:500;color:var(--dark);padding:.35rem .72rem;position:relative;transition:color .2s}
+.nl a::after{content:'';position:absolute;bottom:.15rem;left:.72rem;right:.72rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.nl a:hover,.nl a.a{color:var(--gold)}.nl a:hover::after,.nl a.a::after{transform:scaleX(1)}
+.nq{background:var(--gold)!important;color:#fff!important;font-weight:700!important;padding:.4rem 1rem!important;border-radius:6px!important}
+.nq::after{display:none!important}.nq:hover{opacity:.85!important}
+.ham{display:none;flex-direction:column;gap:5px;background:none;padding:.28rem}
+.ham span{display:block;width:21px;height:2px;background:var(--dark);border-radius:2px;transition:all .27s}
+.ham.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.x span:nth-child(2){opacity:0}
+.ham.x span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob{display:none;position:fixed;inset:0;z-index:850;background:var(--dark);flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob.open{display:flex}
+.mob a{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--lit);transition:color .2s}
+.mob a:hover{color:var(--gold)}
+
+/* HERO */
+#hero{min-height:70vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.18) saturate(.6)}
+.hero-left{position:relative;z-index:2;padding:7rem 0 3.5rem 3rem}
+.pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--g35);background:var(--g08);padding:.3rem .85rem;border-radius:100px;margin-bottom:1.6rem}
+.pip{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pip 2.4s ease-in-out infinite}
+@keyframes pip{0%,100%{box-shadow:0 0 0 0 rgba(196,136,27,.6)}70%{box-shadow:0 0 0 7px rgba(196,136,27,0)}}
+.pill span{font-size:.67rem;color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.h1{font-size:clamp(3rem,5vw,4.8rem);color:var(--white);margin-bottom:1.2rem}
+.h1 em{display:block;font-style:italic;color:var(--gold)}
+.hpara{font-size:.98rem;color:var(--dim);line-height:1.85;max-width:420px;margin-bottom:2.4rem}
+.hbtns{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:3.2rem}
+.btn{display:inline-flex;align-items:center;gap:.42rem;font-weight:700;font-size:.84rem;padding:.82rem 1.75rem;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .26s var(--ease),box-shadow .26s,opacity .2s}
+.btn-g{background:var(--gold);color:var(--dark)}.btn-g:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(196,136,27,.45)}
+.btn-o{background:transparent;color:var(--gold);border:1.5px solid var(--g35)}.btn-o:hover{background:var(--g08);border-color:var(--gold);transform:translateY(-3px)}
+.hstats{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:1.6rem}
+.hs{flex:1;padding-right:1.2rem;margin-right:1.2rem;border-right:1px solid rgba(255,255,255,.08)}
+.hs:last-child{border:none;margin:0;padding:0}
+.hn{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1}
+.hl{font-size:.68rem;color:var(--dim);margin-top:.18rem;line-height:1.48}
+.hero-right{position:relative;height:70vh;z-index:2;display:flex;align-items:center;justify-content:center}
+.pipe-box{position:relative;width:92%;height:88%;border:2px solid rgba(196,136,27,.5);border-radius:18px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.06);background:rgba(43,45,51,.45)}
+#pipe3d{position:absolute;inset:0;width:100%;height:100%}
+.c-hint{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);font-size:.63rem;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;pointer-events:none;display:flex;align-items:center;gap:.45rem}
+.c-hint::before,.c-hint::after{content:'';width:14px;height:1px;background:var(--g35)}
+
+/* TICKER */
+.ticker{background:var(--gold);padding:.62rem 0;overflow:hidden}
+.tk{display:flex;width:max-content;animation:tk 32s linear infinite}
+.ti{display:inline-flex;align-items:center;gap:1.1rem;padding:0 2rem;font-size:.69rem;font-weight:700;color:var(--dark);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.td{width:3px;height:3px;border-radius:50%;background:rgba(43,45,51,.32);flex-shrink:0}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* WRAP + UTILS */
+.wrap{max-width:1220px;margin:0 auto;padding:0 3rem}
+.tag{display:inline-flex;align-items:center;margin-bottom:.9rem;font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);border:1px solid var(--g35);background:var(--g08);padding:.27rem .78rem;border-radius:100px}
+h2.dsp{font-size:clamp(2.2rem,3.6vw,3.2rem)}
+h2.dsp em{font-style:italic;color:var(--gold)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rl{opacity:0;transform:translateX(-22px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rr{opacity:0;transform:translateX(22px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rv.go,.rl.go,.rr.go{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* SECTION — full bleed image bg pattern */
+.sec{position:relative;padding:6rem 0;overflow:hidden}
+.sec-bg{position:absolute;inset:0;z-index:0}
+.sec-bg img{width:100%;height:100%;object-fit:cover}
+.sec-ov{position:absolute;inset:0;z-index:1} /* overlay */
+.sec-cnt{position:relative;z-index:2}
+/* white box utility — used wherever text sits over image backgrounds */
+.wbox{background:rgba(255,255,255,.93);border-radius:16px;padding:2rem 2.2rem}
+.wbox h2,.wbox h3,.wbox h4{color:var(--dark);text-shadow:none}
+.wbox h2 em,.wbox h3 em{color:var(--gold)}
+.wbox p{color:#444;text-shadow:none;line-height:1.75}
+.wbox label{color:#555;text-shadow:none}
+.wbox .tag{color:var(--gold);border-color:rgba(196,136,27,.4);background:rgba(196,136,27,.08)}
+
+/* ABOUT */
+.about-panel{max-width:860px;margin:0 auto;background:rgba(255,255,255,.93);border-radius:18px;padding:1.8rem 2rem;overflow:hidden;box-sizing:border-box}
+.about-panel h2{font-size:clamp(1.4rem,2.2vw,2rem);color:var(--dark);line-height:1.18;margin:.4rem 0 .7rem;text-shadow:none}
+.about-panel h2 em{font-style:italic;color:var(--gold)}
+.about-panel .adesc{font-size:.83rem;color:#444;line-height:1.76;margin-bottom:1.1rem}
+.feats{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.feat{display:flex;align-items:flex-start;gap:.65rem;padding:.7rem .85rem;border-radius:9px;border:1px solid rgba(196,136,27,.3);background:rgba(196,136,27,.07);transition:background .2s,border-color .2s;cursor:default}
+.feat:hover{border-color:rgba(196,136,27,.55);background:rgba(196,136,27,.13)}
+.fi{width:28px;height:28px;flex-shrink:0;border-radius:6px;background:rgba(196,136,27,.28);border:1px solid rgba(196,136,27,.45);display:flex;align-items:center;justify-content:center}
+.fi svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.feat-txt{flex:1}
+.feat h4{font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:.1rem}
+.feat p{font-size:.71rem;color:#555;line-height:1.45}
+
+/* PRODUCTS */
+#products{background:#f7f7f7}
+.sec-hd{text-align:center;margin-bottom:3rem}
+.sec-hd .tag{margin-bottom:.7rem}
+.sec-hd h2{color:var(--dark)}
+.sec-hd h2 em{color:var(--gold)}
+.sec-hd p{font-size:.92rem;color:#666;max-width:500px;margin:.5rem auto 0;line-height:1.8}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.pc{background:#fff;border:1px solid #e4e4e4;border-radius:14px;overflow:hidden;transition:all .28s var(--ease);cursor:default;display:flex;flex-direction:column}
+.pc:hover{border-color:#d4a84b;box-shadow:0 16px 48px rgba(0,0,0,.12);transform:translateY(-5px)}
+.pc-img{height:210px;overflow:hidden;flex-shrink:0}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease)}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.pc-body{padding:1.3rem 1.4rem 1.6rem;flex:1;display:flex;flex-direction:column}
+.pc-tag{font-size:.6rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.28rem}
+.pc-name{font-family:'Cormorant Garamond',serif;font-size:1.22rem;color:var(--dark);margin-bottom:.4rem}
+.pc-desc{font-size:.77rem;color:#555;line-height:1.7;margin-bottom:1rem;flex:1}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:.38rem}
+.sp{background:#f4f4f4;border-radius:6px;padding:.4rem .6rem;border:1px solid #ebebeb}
+.sp-l{display:block;font-size:.58rem;color:#999;margin-bottom:.05rem;text-transform:uppercase}
+.sp-v{font-size:.76rem;font-weight:700;color:var(--dark)}
+
+/* PROCESS */
+#process .sec-ov{background:linear-gradient(rgba(43,45,51,.52) 0%,rgba(43,45,51,.52) 100%)}
+.proc-g{display:grid;grid-template-columns:repeat(3,1fr)}
+.pstep{padding:2.5rem 2rem;border-right:1px solid var(--dbdr);border-bottom:1px solid var(--dbdr);position:relative;cursor:default;transition:background .2s;overflow:hidden}
+.pstep:nth-child(3n){border-right:none}.pstep:nth-child(n+4){border-bottom:none}
+.pstep::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .32s var(--ease)}
+.pstep:hover{background:rgba(196,136,27,.06)}.pstep:hover::before{transform:scaleX(1)}
+.pn{font-family:'Cormorant Garamond',serif;font-size:4.8rem;color:rgba(196,136,27,.1);line-height:1;margin-bottom:.85rem;transition:color .22s}
+.pstep:hover .pn{color:rgba(196,136,27,.2)}
+.pstep h4{font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;color:var(--lit);margin-bottom:.45rem}
+.pstep p{font-size:.77rem;color:var(--dim);line-height:1.7}
+
+/* QUALITY */
+#quality{padding:4rem 0}
+#quality .sec-ov{background:linear-gradient(rgba(20,21,24,.58) 0%,rgba(20,21,24,.58) 100%)}
+.qual-g{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+.qimg{border-radius:15px;overflow:hidden;aspect-ratio:.78;position:relative;box-shadow:0 28px 65px rgba(0,0,0,.5)}
+.qimg img{filter:none}
+.q-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,45,51,.88) 0%,rgba(43,45,51,.15) 55%,transparent 100%)}
+.q-badge{position:absolute;bottom:1.2rem;left:1.2rem;right:1.2rem;background:rgba(43,45,51,.82);backdrop-filter:blur(10px);border:1px solid var(--dbdr);border-radius:10px;padding:.8rem 1rem;display:flex;align-items:center;gap:.7rem}
+.qb-i{width:33px;height:33px;flex-shrink:0;background:var(--g18);border:1px solid var(--g35);border-radius:7px;display:flex;align-items:center;justify-content:center}
+.qb-i svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.qb-t h4{font-size:.8rem;font-weight:700;color:var(--lit);font-family:'DM Sans',sans-serif}
+.qb-t p{font-size:.7rem;color:var(--dim)}
+.qual-txt{background:rgba(255,255,255,.93);border-radius:16px;padding:1.8rem 2rem}
+.stds{display:flex;flex-direction:column;gap:.45rem;margin:1.1rem 0}
+.std{display:flex;align-items:center;gap:.75rem;padding:.7rem .9rem;border-radius:10px;border:1px solid rgba(196,136,27,.25);background:rgba(196,136,27,.06);transition:all .22s;cursor:default}
+.std:hover{border-color:rgba(196,136,27,.5);transform:translateX(4px);background:rgba(196,136,27,.12)}
+.si{width:30px;height:30px;flex-shrink:0;border-radius:7px;background:rgba(196,136,27,.15);border:1px solid rgba(196,136,27,.4);display:flex;align-items:center;justify-content:center}
+.si svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.std h4{font-size:.8rem;font-weight:700;color:var(--dark)}
+.std p{font-size:.7rem;color:#555}
+.qkpi{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-top:1rem}
+.qk{background:rgba(196,136,27,.08);border:1px solid rgba(196,136,27,.28);border-radius:10px;padding:.8rem .6rem;text-align:center;transition:all .22s;cursor:default}
+.qk:hover{background:rgba(196,136,27,.15);border-color:rgba(196,136,27,.5);transform:translateY(-2px)}
+.qk-n{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold)}
+.qk-l{font-size:.6rem;color:#555;margin-top:.15rem;line-height:1.4}
+
+/* PROJECTS */
+#projects{background:var(--dark);padding:6rem 0}
+.pgr{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:2.8rem}
+.pj{border-radius:15px;overflow:hidden;position:relative;cursor:pointer;transition:transform .3s var(--ease),box-shadow .3s}
+.pj:nth-child(1){grid-column:1/3;height:360px}.pj:nth-child(2){height:360px}
+.pj:nth-child(3),.pj:nth-child(4),.pj:nth-child(5){height:300px}
+.pj:nth-child(6){grid-column:2/4;height:300px}
+.pj:hover{transform:scale(1.014);box-shadow:0 20px 48px rgba(0,0,0,.3)}
+.pj img{filter:brightness(.65) saturate(.8);transition:transform .5s var(--ease),filter .3s}
+.pj:hover img{transform:scale(1.07);filter:brightness(.5) saturate(1)}
+.pj-gr{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,45,51,.92) 0%,rgba(43,45,51,.1) 60%,transparent 100%)}
+.pj-cnt{position:absolute;bottom:0;left:0;right:0;padding:1.5rem}
+.pj-cat{font-size:.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:.32rem}
+.pj-t{font-family:'Cormorant Garamond',serif;font-size:1.38rem;color:var(--white);margin-bottom:.28rem}
+.pj-s{font-size:.72rem;color:rgba(255,255,255,.42)}
+.pj-btn{position:absolute;top:1.1rem;right:1.1rem;background:var(--gold);color:var(--dark);font-size:.67rem;font-weight:700;padding:.3rem .82rem;border-radius:100px;opacity:0;transform:translateY(-4px) scale(.9);transition:all .24s var(--spring)}
+.pj:hover .pj-btn{opacity:1;transform:none}
+
+/* MODALS */
+.mbg{position:fixed;inset:0;z-index:1000;background:rgba(43,45,51,.9);backdrop-filter:blur(10px);display:flex;align-items:flex-end;justify-content:center;padding:0 1rem;opacity:0;pointer-events:none;transition:opacity .3s}
+.mbg.on{opacity:1;pointer-events:all}
+.mdl{background:#32343B;border-radius:20px 20px 0 0;width:100%;max-width:670px;max-height:90vh;overflow-y:auto;transform:translateY(100%);transition:transform .37s var(--ease)}
+.mbg.on .mdl{transform:none}
+.mdl-img{height:230px;position:relative;overflow:hidden;border-radius:20px 20px 0 0}
+.mdl-img img{filter:brightness(.75)}
+.mdl-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,45,51,.92) 0%,transparent 55%)}
+.mdl-x{position:absolute;top:1rem;right:1rem;z-index:2;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.2);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.1rem;cursor:pointer;transition:background .2s}
+.mdl-x:hover{background:rgba(255,255,255,.25)}
+.mdl-hd{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.9rem}
+.mdl-cat{font-size:.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:.28rem}
+.mdl-name{font-family:'Cormorant Garamond',serif;font-size:1.65rem;color:var(--white)}
+.mdl-body{padding:1.7rem 1.9rem 2.2rem}
+.mdl-desc{font-size:.89rem;color:var(--dim);line-height:1.82;margin-bottom:1.5rem}
+.mdl-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem}
+.kpi{background:rgba(255,255,255,.06);border:1px solid var(--dbdr);border-radius:9px;padding:.9rem;text-align:center}
+.kpi-n{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--gold)}
+.kpi-l{font-size:.67rem;color:var(--dim);margin-top:.16rem}
+.mdl-pts{list-style:none}
+.mdl-pts h4{font-family:'DM Sans',sans-serif;font-size:.83rem;font-weight:700;margin-bottom:.6rem;color:var(--lit)}
+.mdl-pts li{padding:.48rem 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:.83rem;color:var(--dim);display:flex;align-items:center;gap:.55rem}
+.mdl-pts li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* SUSTAINABILITY */
+#sustainability .sec-ov{background:linear-gradient(rgba(20,21,24,.58) 0%,rgba(20,21,24,.58) 100%)}
+.sust-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+.sc{background:rgba(255,255,255,.93);border:1px solid #e8e8e8;border-radius:15px;padding:1.8rem 1.6rem;transition:all .27s var(--ease);cursor:default;position:relative;overflow:hidden}
+.sc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);transform:scaleX(0);transition:transform .32s}
+.sc:hover{border-color:rgba(196,136,27,.4);transform:translateY(-5px);box-shadow:0 18px 44px rgba(0,0,0,.18)}.sc:hover::after{transform:scaleX(1)}
+.sc-i{width:36px;height:36px;border-radius:8px;background:rgba(196,136,27,.12);border:1px solid rgba(196,136,27,.35);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.sc-i svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.sc h3{font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:.5rem;text-shadow:none}
+.sc p{font-size:.77rem;color:#555;line-height:1.7}
+.sc-tag{display:inline-block;margin-top:1rem;padding:.24rem .75rem;border-radius:100px;background:var(--g08);border:1px solid var(--g18);font-size:.67rem;color:var(--gd);font-weight:700}
+
+/* EXPORTS */
+#exports .sec-ov{background:rgba(43,45,51,.52)}
+.exp-g{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.exp-regs{display:flex;flex-direction:column;gap:.55rem;margin-top:1.8rem}
+.reg{display:flex;align-items:center;gap:.85rem;padding:.85rem 1.05rem;border-radius:10px;border:1px solid var(--dbdr);background:rgba(255,255,255,.04);transition:all .22s;cursor:default}
+.reg:hover{border-color:var(--g35);transform:translateX(4px);background:rgba(196,136,27,.08)}
+.rf{font-size:1.3rem;flex-shrink:0;line-height:1}
+.reg h4{font-size:.82rem;font-weight:700;color:var(--lit)}
+.reg p{font-size:.71rem;color:var(--dim)}
+.rb{margin-left:auto;white-space:nowrap;flex-shrink:0;font-size:.6rem;font-weight:700;padding:.18rem .55rem;border-radius:100px}
+.rb.a{background:rgba(196,136,27,.12);color:var(--gd)}.rb.g{background:rgba(50,160,50,.12);color:#3CA03C}
+.exp-vis{background:rgba(0,0,0,.25);border:1px solid var(--dbdr);border-radius:18px;padding:2.4rem;position:relative}
+.ev-t{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--white);margin-bottom:.28rem}
+.ev-s{font-size:.75rem;color:var(--dim);margin-bottom:1.8rem}
+.ec-g{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ec{background:rgba(255,255,255,.05);border:1px solid var(--dbdr);border-radius:9px;padding:1rem;transition:all .22s;cursor:default}
+.ec:hover{background:rgba(196,136,27,.1);border-color:var(--g35)}
+.ec-i{width:26px;height:26px;border-radius:5px;background:var(--g18);border:1px solid var(--g35);display:flex;align-items:center;justify-content:center;margin-bottom:.5rem}
+.ec-i svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ec-r{font-size:.79rem;font-weight:700;color:var(--lit)}
+.ec-d{font-size:.69rem;color:var(--dim);margin-top:.13rem}
+.ev-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1.4rem}
+.ek{text-align:center}
+.ek-n{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold)}
+.ek-l{font-size:.65rem;color:var(--dim);margin-top:.1rem}
+
+/* CONTACT */
+#contact .sec-ov{background:linear-gradient(rgba(20,21,24,.62) 0%,rgba(20,21,24,.62) 100%)}
+.con-g{display:grid;grid-template-columns:1.3fr .7fr;gap:4.5rem;margin-top:3rem}
+.fg{margin-bottom:.88rem}
+.fg label{display:block;font-size:.75rem;font-weight:600;color:#333;margin-bottom:.35rem;transition:color .2s}
+.fg:focus-within label{color:var(--gold)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.finp{width:100%;padding:.8rem .95rem;background:#fff;border:1.5px solid #d0d0d0;border-radius:8px;color:var(--dark);font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;transition:border-color .2s,background .2s,box-shadow .2s}
+.finp:focus{border-color:var(--gold);background:#fff;box-shadow:0 0 0 3px rgba(196,136,27,.14)}
+.fi::placeholder{color:rgba(255,255,255,.18)}
+textarea.fi{resize:vertical;min-height:100px}
+select.fi{cursor:pointer}
+.btn-sub{width:100%;padding:.9rem;background:var(--gold);color:var(--dark);font-weight:700;font-size:.86rem;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s,transform .26s,box-shadow .26s}
+.btn-sub:hover{background:var(--gl);transform:translateY(-3px);box-shadow:0 10px 28px rgba(196,136,27,.42)}
+.ci-t{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--dark);margin-bottom:.52rem}
+.ci-s{font-size:.85rem;color:#444;line-height:1.76;margin-bottom:1.8rem}
+.cds{display:flex;flex-direction:column;gap:1.1rem}
+.cd{display:flex;gap:.78rem;align-items:flex-start}
+.cdi{width:36px;height:36px;flex-shrink:0;border-radius:8px;background:var(--g18);border:1px solid var(--g35);display:flex;align-items:center;justify-content:center}
+.cdi svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cd h4{font-family:'DM Sans',sans-serif;font-size:.77rem;font-weight:700;color:var(--dark);margin-bottom:.14rem}
+.cd p,.cd a{font-size:.77rem;color:#555;line-height:1.6}
+.cd a:hover{color:var(--gold)}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 1.7rem}
+.foot-g{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.fa p{font-size:.77rem;color:var(--dim);line-height:1.76;margin:.9rem 0 1.3rem}
+.socs{display:flex;gap:.4rem}
+.soc{width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:.7rem;font-weight:700;transition:all .2s}
+.soc:hover{background:var(--g18);color:var(--gold);border-color:var(--g35)}
+.fc h5{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lit);margin-bottom:.9rem}
+.fl{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.fl a{font-size:.75rem;color:var(--dim);transition:color .2s}.fl a:hover{color:var(--gold)}
+.foot-b{border-top:1px solid rgba(255,255,255,.07);padding-top:1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.9rem}
+.foot-b p{font-size:.71rem;color:rgba(255,255,255,.2)}
+.certs{display:flex;gap:.4rem;flex-wrap:wrap}
+.cert{font-size:.58rem;padding:.2rem .52rem;border:1px solid var(--dbdr);border-radius:3px;color:rgba(196,136,27,.48)}
+
+/* FLOATERS */
+.backtop{position:fixed;bottom:2rem;left:2rem;z-index:500;width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--dark);font-size:.95rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(8px);pointer-events:none;transition:all .3s var(--ease);box-shadow:0 5px 18px rgba(196,136,27,.4)}
+.backtop.show{opacity:1;transform:none;pointer-events:all}.backtop:hover{background:var(--gl);transform:translateY(-3px)}
+.toast{position:fixed;bottom:2rem;right:2rem;z-index:2000;background:#32343B;color:var(--white);padding:.9rem 1.4rem;border-radius:11px;font-size:.83rem;display:flex;align-items:center;gap:.6rem;box-shadow:0 14px 40px rgba(0,0,0,.3);border-left:3px solid var(--gold);transform:translateY(120%);opacity:0;transition:all .34s var(--ease)}
+.toast.show{transform:none;opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:1080px){
+  #hero{grid-template-columns:1fr}.hero-left{padding:8rem 2rem 3rem}.hero-right{height:380px}
+  .about-panel{margin:0;max-width:100%}
+  .about-top{flex-direction:column;gap:1rem}
+  .feats{grid-template-columns:1fr}
+  .about-g,.qual-g,.exp-g,.con-g{grid-template-columns:1fr;gap:3rem}
+  .yr{right:0;bottom:-1.2rem}
+  .pgrid,.sust-g{grid-template-columns:1fr 1fr}
+  .proc-g{grid-template-columns:1fr 1fr}
+  .qkpi{grid-template-columns:1fr 1fr}
+  .pj:nth-child(1){grid-column:1/2;height:260px}.pj:nth-child(6){grid-column:1/2;height:260px}
+  .pgr{grid-template-columns:1fr 1fr}.pj{height:240px!important}
+  .foot-g{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:768px){
+  nav{padding:.9rem 1.4rem}nav.on{padding:.62rem 1.4rem}
+  .nl{display:none}.ham{display:flex}
+  .wrap{padding:0 1.3rem}
+  .hero-left{padding:7rem 1.3rem 2.4rem}.h1{font-size:2.7rem}
+  .hstats{flex-wrap:wrap}
+  .hs{flex:calc(50% - .6rem);border:none;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:.8rem;margin:.35rem 0;margin-right:0}
+  .hs:last-child,.hs:nth-child(3){border-bottom:none}
+  .pgrid,.sust-g,.pgr{grid-template-columns:1fr}
+  .proc-g{grid-template-columns:1fr}.pstep{border-right:none}
+  .pstep:nth-child(n+4){border-bottom:1px solid var(--dbdr)}.pstep:last-child{border-bottom:none}
+  .pj{height:210px!important;grid-column:auto!important}
+  .frow{grid-template-columns:1fr}.foot-g{grid-template-columns:1fr}
+  .mdl-kpis{grid-template-columns:1fr}.exp-g{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo">
+    <img src="images/logo-icon.png" alt="Dawood RCC Pipe" class="logo-icon">
+    <div class="logo-text"><span class="lname">Dawood RCC Pipe</span><span class="lsub">Est. 1967 &middot; Karachi, Pakistan</span></div>
+  </a>
+  <ul class="nl" id="nl">
+    <li><a href="#about">About</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#quality">Quality</a></li>
+    <li><a href="#contact" class="nq">Get a Quote</a></li>
+  </ul>
+  <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob" id="mob">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#products" onclick="closeMob()">Products</a>
+  <a href="#quality" onclick="closeMob()">Quality</a>
+  <a href="#contact" onclick="closeMob()" style="color:var(--gold)">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"><img src="images/hero-main.png" alt="Dawood RCC concrete pipes stacked at factory yard Lahore"></div>
+  <div class="hero-left rl" style="position:relative;z-index:2">
+    <div class="pill"><div class="pip"></div><span>Pakistan's Premier RCC Pipe Manufacturer</span></div>
+    <h1 class="h1">Engineering<br>Pakistan's<br><em>Infrastructure</em></h1>
+    <p class="hpara">57 years of precision manufacturing from Karachi. Over a million reinforced concrete pipes, serving every motorway, dam, irrigation scheme and city sewerage system across Pakistan.</p>
+    <div class="hbtns">
+      <a href="#products" class="btn btn-g mag">Explore Products &rarr;</a>
+      <a href="#contact" class="btn btn-o mag">Request a Quote</a>
+    </div>
+    <div class="hstats">
+      <div class="hs"><div class="hn"><span data-cnt="57">0</span>+</div><div class="hl">Years of Experience<br>Est. 1967, Karachi</div></div>
+      <div class="hs"><div class="hn"><span data-cnt="500">0</span>+</div><div class="hl">Skilled Employees<br>Punjab, Pakistan</div></div>
+      <div class="hs"><div class="hn">1M+</div><div class="hl">Pipes Manufactured<br>Pan-Pakistan</div></div>
+      <div class="hs"><div class="hn"><span data-cnt="15">0</span>+</div><div class="hl">Export Countries<br>3 Continents</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="pipe-box">
+    <canvas id="pipe3d"></canvas>
+    <div class="c-hint">Drag to rotate &middot; RCC Hume Pipe 3D</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="tk">
+    <span class="ti">57 Years of Excellence<span class="td"></span></span>
+    <span class="ti">PSQCA Certified Manufacturer<span class="td"></span></span>
+    <span class="ti">1,000,000+ Pipes Supplied in Pakistan<span class="td"></span></span>
+    <span class="ti">ISO 9001 &middot; ASTM C-76 &middot; BS EN 1916<span class="td"></span></span>
+    <span class="ti">NHA &middot; WAPDA &middot; CDA Approved Supplier<span class="td"></span></span>
+    <span class="ti">Middle East &middot; Africa &middot; Central Asia<span class="td"></span></span>
+    <span class="ti">Lahore &middot; Karachi &middot; Islamabad &middot; Peshawar<span class="td"></span></span>
+    <span class="ti">57 Years of Excellence<span class="td"></span></span>
+    <span class="ti">PSQCA Certified Manufacturer<span class="td"></span></span>
+    <span class="ti">1,000,000+ Pipes Supplied in Pakistan<span class="td"></span></span>
+    <span class="ti">ISO 9001 &middot; ASTM C-76 &middot; BS EN 1916<span class="td"></span></span>
+    <span class="ti">NHA &middot; WAPDA &middot; CDA Approved Supplier<span class="td"></span></span>
+    <span class="ti">Middle East &middot; Africa &middot; Central Asia<span class="td"></span></span>
+    <span class="ti">Lahore &middot; Karachi &middot; Islamabad &middot; Peshawar<span class="td"></span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec" style="padding:2.5rem 0;overflow:hidden">
+  <div class="sec-bg"><img src="images/about-hero.png" alt="RCC concrete pipes stacked at Dawood factory yard, Karachi"></div>
+  <div class="wrap sec-cnt">
+    <div class="about-panel rv">
+      <div class="tag" style="margin-bottom:.5rem">Our Story | Est. 1967, Karachi</div>
+      <h2>Pakistan's Most <em>Trusted</em> RCC Pipe Manufacturer</h2>
+      <p class="adesc">Founded in Karachi in 1967, Dawood RCC Pipe has laid the underground foundation of Pakistan's critical infrastructure for over 57 years. NHA motorways, WAPDA dams, irrigation schemes and city sewerage. 500+ employees. 1 million+ pipes delivered.</p>
+      <div class="feats">
+        <div class="feat">
+          <div class="fi"><svg viewBox="0 0 16 16"><path d="M8 1.5l1.8 4.5H15l-4 3 1.5 4.8L8 11.2l-4.5 2.6L5 9l-4-3h5.2L8 1.5z"/></svg></div>
+          <div class="feat-txt"><h4>PSQCA &amp; ISO Certified</h4><p>Pakistan Standards Authority approved</p></div>
+        </div>
+        <div class="feat">
+          <div class="fi"><svg viewBox="0 0 16 16"><path d="M5.5 2v7.5L2.5 14h11l-3-4.5V2M5.5 2h5M3.5 10h9"/></svg></div>
+          <div class="feat-txt"><h4>In-House Testing Lab</h4><p>Hydrostatic &amp; three-edge bearing tests</p></div>
+        </div>
+        <div class="feat">
+          <div class="fi"><svg viewBox="0 0 16 16"><rect x="1" y="5" width="10" height="7" rx="1"/><path d="M11 8l2-2 2 2M13 6v6"/><circle cx="3.5" cy="13" r="1.5"/><circle cx="8.5" cy="13" r="1.5"/></svg></div>
+          <div class="feat-txt"><h4>Pan-Pakistan Delivery</h4><p>Every province, Karachi to Peshawar</p></div>
+        </div>
+        <div class="feat">
+          <div class="fi"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M8 1.5S5.5 4 5.5 8s2.5 6.5 2.5 6.5M8 1.5S10.5 4 10.5 8 8 14.5 8 14.5M1.5 8h13M2.5 5h11M2.5 11h11"/></svg></div>
+          <div class="feat-txt"><h4>30+ Years Export History</h4><p>Middle East, Africa &amp; Central Asia</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="sec" style="background:#f7f7f7;padding:5rem 0">
+  <div class="wrap">
+    <div class="sec-hd rv">
+      <div class="tag">Our Products</div>
+      <h2 class="dsp">Complete Range of <em>RCC Concrete Pipes</em></h2>
+      <p>Every class of reinforced concrete pipe, meeting NHA, WAPDA, CDA and international specifications.</p>
+    </div>
+    <div class="pgrid">
+      <div class="pc rv">
+        <div class="pc-img"><img src="images/prod-np2.png" alt="NP-2 Hume Pipes stacked"></div>
+        <div class="pc-body">
+          <div class="pc-tag">Non-Pressure &middot; Class 2</div>
+          <h3 class="pc-name">NP-2 Hume Pipes</h3>
+          <p class="pc-desc">Gravity-flow drainage, sewerage and road culverts under light to medium loading across Pakistan.</p>
+          <div class="specs">
+            <div class="sp"><span class="sp-l">Diameter</span><span class="sp-v">300–1200mm</span></div>
+            <div class="sp"><span class="sp-l">Length</span><span class="sp-v">2.5m / 3m</span></div>
+            <div class="sp"><span class="sp-l">Standard</span><span class="sp-v">PS: 283</span></div>
+            <div class="sp"><span class="sp-l">Joint</span><span class="sp-v">Spigot &amp; Socket</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc rv d1">
+        <div class="pc-img"><img src="images/prod-np3.png" alt="NP-3 Heavy Duty RCC Pipe close-up"></div>
+        <div class="pc-body">
+          <div class="pc-tag">Non-Pressure &middot; Class 3</div>
+          <h3 class="pc-name">NP-3 Heavy Duty Pipes</h3>
+          <p class="pc-desc">Double cage reinforcement for NHA motorway culverts and direct heavy vehicular loading.</p>
+          <div class="specs">
+            <div class="sp"><span class="sp-l">Diameter</span><span class="sp-v">300–1800mm</span></div>
+            <div class="sp"><span class="sp-l">Length</span><span class="sp-v">2.5m / 3m</span></div>
+            <div class="sp"><span class="sp-l">Standard</span><span class="sp-v">PS: 283</span></div>
+            <div class="sp"><span class="sp-l">Joint</span><span class="sp-v">Rubber Ring</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc rv d2">
+        <div class="pc-img"><img src="images/prod-np4.png" alt="NP-4 Super Heavy Duty RCC Pipe"></div>
+        <div class="pc-body">
+          <div class="pc-tag">Non-Pressure &middot; Class 4</div>
+          <h3 class="pc-name">NP-4 Super Heavy Duty</h3>
+          <p class="pc-desc">Maximum wall thickness for deep-burial CPEC corridors and critical civil infrastructure projects.</p>
+          <div class="specs">
+            <div class="sp"><span class="sp-l">Diameter</span><span class="sp-v">600–2400mm</span></div>
+            <div class="sp"><span class="sp-l">Length</span><span class="sp-v">3m / 4m</span></div>
+            <div class="sp"><span class="sp-l">Standard</span><span class="sp-v">PS: 283</span></div>
+            <div class="sp"><span class="sp-l">Joint</span><span class="sp-v">Rubber Ring</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc rv">
+        <div class="pc-img"><img src="images/prod-culvert.png" alt="RCC Box Culverts precast concrete"></div>
+        <div class="pc-body">
+          <div class="pc-tag">Rectangular &middot; Precast</div>
+          <h3 class="pc-name">RCC Box Culverts</h3>
+          <p class="pc-desc">Precast box culverts for road underpasses, irrigation crossings and non-circular drainage requirements.</p>
+          <div class="specs">
+            <div class="sp"><span class="sp-l">Size</span><span class="sp-v">600&times;600mm+</span></div>
+            <div class="sp"><span class="sp-l">Length</span><span class="sp-v">1m / 1.5m</span></div>
+            <div class="sp"><span class="sp-l">Standard</span><span class="sp-v">AASHTO</span></div>
+            <div class="sp"><span class="sp-l">Load</span><span class="sp-v">HS-20/HS-25</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc rv d1">
+        <div class="pc-img"><img src="images/prod-manhole.png" alt="Manhole rings concrete stacked on truck"></div>
+        <div class="pc-body">
+          <div class="pc-tag">Vertical Structure</div>
+          <h3 class="pc-name">Manhole Rings &amp; Covers</h3>
+          <p class="pc-desc">Precast manhole rings and D400-rated covers for sewerage inspection chambers across Pakistan's cities.</p>
+          <div class="specs">
+            <div class="sp"><span class="sp-l">Diameter</span><span class="sp-v">900–1800mm</span></div>
+            <div class="sp"><span class="sp-l">Height</span><span class="sp-v">250–600mm</span></div>
+            <div class="sp"><span class="sp-l">Load</span><span class="sp-v">D-400</span></div>
+            <div class="sp"><span class="sp-l">Standard</span><span class="sp-v">EN 1917</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc rv d2">
+        <div class="pc-img"><img src="images/prod-jacking.png" alt="RCC Jacking Pipes large diameter"></div>
+        <div class="pc-body">
+          <div class="pc-tag">Trenchless Technology</div>
+          <h3 class="pc-name">RCC Jacking Pipes</h3>
+          <p class="pc-desc">Under-road installation without excavation for crossing highways, railways and sensitive areas. &plusmn;2mm precision.</p>
+          <div class="specs">
+            <div class="sp"><span class="sp-l">Diameter</span><span class="sp-v">600–2000mm</span></div>
+            <div class="sp"><span class="sp-l">Length</span><span class="sp-v">2m / 2.5m</span></div>
+            <div class="sp"><span class="sp-l">Standard</span><span class="sp-v">ISO 9842</span></div>
+            <div class="sp"><span class="sp-l">Tolerance</span><span class="sp-v">&plusmn;2mm</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section id="quality" class="sec">
+  <div class="sec-bg"><img src="images/quality-hero.png" alt="RCC pipes stacked at Dawood factory yard"></div>
+  <div class="sec-ov"></div>
+  <div class="wrap sec-cnt">
+    <div class="qual-g">
+      <div class="qimg rl">
+        <img src="images/quality-overlap.png" alt="RCC pipe being laid in trench at construction site">
+        <div class="q-ov"></div>
+        <div class="q-badge">
+          <div class="qb-i"><svg viewBox="0 0 16 16"><path d="M8 1.5l1.8 4.5H15l-4 3 1.5 4.8L8 11.2l-4.5 2.6L5 9l-4-3h5.2L8 1.5z"/></svg></div>
+          <div class="qb-t"><h4>PSQCA Certified Manufacturer</h4><p>Pakistan Standards &amp; Quality Control Authority Approved</p></div>
+        </div>
+      </div>
+      <div class="rr qual-txt">
+        <div class="tag">Quality &amp; Certification</div>
+        <h2 class="dsp" style="color:var(--dark);margin:.4rem 0 .5rem;font-size:clamp(1.5rem,2.6vw,2.3rem)">Every Pipe Certified<br>Before It Leaves <em>Our Yard</em></h2>
+        <p style="font-size:.86rem;color:#444;line-height:1.75">Our QMS is built around internationally recognised certifications, backed by rigorous in-house testing at every production stage.</p>
+        <div class="stds">
+          <div class="std rv d1"><div class="si"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M5 8.5l2 2 4-4"/></svg></div><div><h4>ASTM C-76 Standard</h4><p>American standard for reinforced concrete culvert, storm drain and sewer pipe</p></div></div>
+          <div class="std rv d2"><div class="si"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M5 8.5l2 2 4-4"/></svg></div><div><h4>ISO 9001 Quality Management</h4><p>Systematic QMS ensuring batch-to-batch consistency across all lines</p></div></div>
+          <div class="std rv d3"><div class="si"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M5 8.5l2 2 4-4"/></svg></div><div><h4>BS EN 1916 European Standard</h4><p>European concrete pipe standard for international export compliance</p></div></div>
+          <div class="std rv d4"><div class="si"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M5 8.5l2 2 4-4"/></svg></div><div><h4>100% Hydrostatic Testing</h4><p>Every pressure pipe tested at 1.5&times; working pressure before dispatch</p></div></div>
+        </div>
+        <div class="qkpi">
+          <div class="qk rv d1"><div class="qk-n">C35+</div><div class="qk-l">Concrete Grade</div></div>
+          <div class="qk rv d2"><div class="qk-n">500+</div><div class="qk-l">MPa Steel Yield</div></div>
+          <div class="qk rv d3"><div class="qk-n">100%</div><div class="qk-l">Batch Tested</div></div>
+          <div class="qk rv d4"><div class="qk-n">100yr</div><div class="qk-l">Design Life</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section id="sustainability" class="sec">
+  <div class="sec-bg"><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1920&q=80" alt="Sustainability landscape"></div>
+  <div class="sec-ov"></div>
+  <div class="wrap sec-cnt">
+    <div class="sec-hd rv">
+      <div class="tag" style="color:#3CA03C;border-color:rgba(60,160,60,.35);background:rgba(60,160,60,.09)">Sustainability</div>
+      <h2 class="dsp" style="color:var(--white);text-shadow:0 2px 14px rgba(0,0,0,.8)">Built for Today,<br><em>Kind to Tomorrow</em></h2>
+      <p style="max-width:500px;margin:.55rem auto 0;color:var(--dim);line-height:1.8">Sustainability embedded in every decision, from raw material sourcing to a 100-year design service life.</p>
+    </div>
+    <div class="sust-g">
+      <div class="sc rv"><div class="sc-i"><svg viewBox="0 0 18 18"><path d="M6 3h6M3 9h12M6 15h6M9 3v12"/></svg></div><h3>100% Recyclable Materials</h3><p>Cement, steel and aggregates, all infinitely recyclable. End-of-life concrete is crushed and reused as aggregate for new construction across Pakistan.</p><span class="sc-tag">Zero Landfill</span></div>
+      <div class="sc rv d1"><div class="sc-i"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="3"/><path d="M9 1v3M9 14v3M1 9h3M14 9h3M3.2 3.2l2.1 2.1M12.7 12.7l2.1 2.1M3.2 14.8l2.1-2.1M12.7 5.3l2.1-2.1"/></svg></div><h3>Low Carbon Process</h3><p>Locally sourced Pakistani materials minimise transport emissions. Fly ash and GGBS replace up to 30% of Portland cement, cutting CO₂ per pipe manufactured in Karachi.</p><span class="sc-tag">30% Less CO₂</span></div>
+      <div class="sc rv d2"><div class="sc-i"><svg viewBox="0 0 18 18"><path d="M9 2c-3.3 0-6 2.7-6 6 0 2.5 1.5 4.6 3.7 5.5L9 16l2.3-2.5C13.5 12.6 15 10.5 15 8c0-3.3-2.7-6-6-6z"/><path d="M9 5v6M6.5 8h5"/></svg></div><h3>Water Conservation</h3><p>Closed-loop water recycling in our Karachi curing yards achieves near-zero discharge; treated water reused across all processes every day of production.</p><span class="sc-tag">80% Recycled</span></div>
+      <div class="sc rv"><div class="sc-i"><svg viewBox="0 0 18 18"><rect x="2" y="9" width="14" height="7" rx="1.5"/><path d="M5 9V7a4 4 0 018 0v2"/><path d="M9 12v2"/></svg></div><h3>Renewable Energy</h3><p>Solar PV on rooftops, LED lighting and variable-speed drives reduce our energy intensity by 25% versus conventional manufacturing in Punjab.</p><span class="sc-tag">25% Renewable</span></div>
+      <div class="sc rv d1"><div class="sc-i"><svg viewBox="0 0 18 18"><path d="M9 2C5 6 3 9 3 12a6 6 0 0012 0c0-3-2-6-6-10z"/><path d="M9 8v7"/></svg></div><h3>Pakistan's Green Future</h3><p>Our pipes enable Pakistan's water security, from drip irrigation to urban stormwater harvesting systems that recharge groundwater in Pakistan's arid regions.</p><span class="sc-tag">50K+ Trees Protected</span></div>
+      <div class="sc rv d2"><div class="sc-i"><svg viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 3"/></svg></div><h3>100-Year Design Life</h3><p>Fewer replacement cycles means less waste, lower lifetime emissions and less disruption to Pakistan's communities. Our pipes outlast the generation that installed them.</p><span class="sc-tag">Century-Grade Quality</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-bg"><img src="images/contact-hero.png" alt="RCC concrete pipes stacked at yard"></div>
+  <div class="sec-ov"></div>
+  <div class="wrap sec-cnt">
+    <div class="wbox">
+    <div class="rv">
+      <div class="tag">Get In Touch</div>
+      <h2 class="dsp">Request a <em>Quote</em> Today</h2>
+      <p style="font-size:.94rem;color:#444;margin:.4rem 0 0;max-width:460px;line-height:1.8">Our engineers respond within 24 hours with a tailored quote and specification for your project.</p>
+    </div>
+    <div class="con-g">
+      <div class="rl">
+        <form name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="margin-top:1.4rem">
+          <input type="hidden" name="form-name" value="quote-request">
+          <input type="hidden" name="bot-field" style="display:none">
+          <div class="frow">
+            <div class="fg"><label>Full Name *</label><input class="finp" type="text" placeholder="Ahmed Khan" required></div>
+            <div class="fg"><label>Company</label><input class="finp" type="text" placeholder="Your Organisation"></div>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Email Address *</label><input class="finp" type="email" placeholder="ahmed@company.pk" required></div>
+            <div class="fg"><label>Phone / WhatsApp *</label><input class="finp" type="tel" placeholder="+92 300 000 0000" required></div>
+          </div>
+          <div class="fg">
+            <label>Product Required</label>
+            <select class="finp">
+              <option value="">Select product type...</option>
+              <option>NP-2 Hume Pipes (300–1200mm)</option>
+              <option>NP-3 Heavy Duty (300–1800mm)</option>
+              <option>NP-4 Super Heavy Duty (600–2400mm)</option>
+              <option>RCC Box Culverts</option>
+              <option>Manhole Rings &amp; Covers</option>
+              <option>RCC Jacking Pipes</option>
+              <option>Multiple / Mixed Products</option>
+            </select>
+          </div>
+          <div class="frow">
+            <div class="fg"><label>Diameter Required</label><input class="finp" type="text" placeholder="e.g. 600mm, 1200mm"></div>
+            <div class="fg"><label>Quantity</label><input class="finp" type="text" placeholder="e.g. 500 pipes / 2km"></div>
+          </div>
+          <div class="fg"><label>Project Details</label><textarea class="finp" placeholder="Project location, type, timeline, special specifications..."></textarea></div>
+          <button type="submit" class="btn-sub">Submit Quote Request &rarr;</button>
+        </form>
+      </div>
+      <div class="rr" style="margin-top:1.4rem">
+        <h3 class="ci-t">Talk to Our Engineers</h3>
+        <p class="ci-s">Our team has over 57 years of combined expertise in Pakistan's infrastructure. Whether you need technical specs, a site consultation or a custom product, we are ready.</p>
+        <div class="cds">
+          <div class="cd"><div class="cdi"><svg viewBox="0 0 16 16"><path d="M8 1.5A5.5 5.5 0 002.5 7c0 3.5 5.5 8 5.5 8s5.5-4.5 5.5-8A5.5 5.5 0 008 1.5z"/><circle cx="8" cy="7" r="1.8"/></svg></div><div><h4>Head Office &amp; Factory</h4><p>Dawood RCC Pipe Industry<br>Industrial Area, Karachi, Sindh</p></div></div>
+          <div class="cd"><div class="cdi"><svg viewBox="0 0 16 16"><path d="M14 10.5l-3-1.3-1.2 1.8C7.5 10.2 5.8 8.5 5 6.2l1.8-1.2L5.5 2 2 2.2C2 9.2 6.8 14 13.8 14L14 10.5z"/></svg></div><div><h4>Phone &amp; WhatsApp</h4><a href="tel:+924235000000">+92 42 3500 0000</a><br><a href="tel:+923001234567">+92 300 1234 567 (WhatsApp)</a></div></div>
+          <div class="cd"><div class="cdi"><svg viewBox="0 0 16 16"><rect x="1.5" y="3.5" width="13" height="9" rx="1.5"/><path d="M1.5 5l6.5 4.5L14.5 5"/></svg></div><div><h4>Email</h4><a href="mailto:info@dawoodrccpipe.com.pk">info@dawoodrccpipe.com.pk</a><br><a href="mailto:export@dawoodrccpipe.com.pk">export@dawoodrccpipe.com.pk</a></div></div>
+          <div class="cd"><div class="cdi"><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5v4l2.5 2.5"/></svg></div><div><h4>Business Hours</h4><p>Mon–Sat: 8:00 AM – 6:00 PM PKT<br>Export enquiries accepted 24/7 by email</p></div></div>
+        </div>
+      </div>
+    </div>
+    </div><!-- /.wbox -->
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-g">
+      <div class="fa">
+        <a href="#hero"><img src="images/logo.png" alt="Dawood RCC Pipe" style="height:160px;width:160px;object-fit:contain;border-radius:12px;display:block"></a>
+        <p>Pakistan's most trusted manufacturer of Reinforced Cement Concrete pipes for over 57 years. From Karachi to Khyber, building the infrastructure of a nation.</p>
+        <div class="socs"><a href="#" class="soc">in</a><a href="#" class="soc">fb</a><a href="#" class="soc">yt</a><a href="#" class="soc">wa</a></div>
+      </div>
+      <div class="fc"><h5>Products</h5><ul class="fl"><li><a href="#products">NP-2 Hume Pipes</a></li><li><a href="#products">NP-3 Heavy Duty</a></li><li><a href="#products">NP-4 Super Heavy</a></li><li><a href="#products">Box Culverts</a></li><li><a href="#products">Manhole Rings</a></li><li><a href="#products">Jacking Pipes</a></li></ul></div>
+      <div class="fc"><h5>Company</h5><ul class="fl"><li><a href="#about">About Us</a></li><li><a href="#products">Products</a></li><li><a href="#quality">Quality &amp; Certs</a></li><li><a href="#sustainability">Sustainability</a></li></ul></div>
+      <div class="fc"><h5>Contact</h5><ul class="fl"><li><a href="#contact">Get a Quote</a></li><li><a href="mailto:info@dawoodrccpipe.com.pk">Email Us</a></li><li><a href="tel:+924235000000">Call Us</a></li><li><a href="#">Careers</a></li><li><a href="#">Distributors</a></li><li><a href="#">Technical Docs</a></li></ul></div>
+    </div>
+    <div class="foot-b">
+      <p>&copy; 2024 Dawood RCC Pipe Industry, Karachi, Pakistan. All rights reserved. Established 1967.</p>
+      <div class="certs"><span class="cert">PSQCA</span><span class="cert">ISO 9001</span><span class="cert">ASTM C-76</span><span class="cert">BS EN 1916</span></div>
+    </div>
+  </div>
+</footer>
+
+<button class="backtop" id="backtop" onclick="scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<div class="toast" id="toast">
+  <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" fill="#C4881B"/><path d="M4.5 8l2 2 4-4" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span>Quote submitted! We'll respond within 24 hours.</span>
+</div>
+
+<script>
+/* ─── NAV / PROGRESS / SCROLL ─── */
+const prog=document.getElementById('prog'),nav=document.getElementById('nav'),bt=document.getElementById('backtop');
+const secs=[...document.querySelectorAll('section[id]')];
+const nas=[...document.querySelectorAll('.nl a')];
+window.addEventListener('scroll',()=>{
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  prog.style.width=(y/h*100)+'%';
+  nav.classList.toggle('on',y>50);
+  bt.classList.toggle('show',y>500);
+  let cur='';secs.forEach(s=>{if(y>=s.offsetTop-130)cur=s.id;});
+  nas.forEach(a=>a.classList.toggle('a',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+/* ─── MOBILE NAV ─── */
+function toggleMob(){document.getElementById('ham').classList.toggle('x');document.getElementById('mob').classList.toggle('open');document.body.style.overflow=document.getElementById('mob').classList.contains('open')?'hidden':'';}
+function closeMob(){document.getElementById('ham').classList.remove('x');document.getElementById('mob').classList.remove('open');document.body.style.overflow='';}
+
+/* ─── SCROLL REVEAL ─── */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('go');}),{threshold:.1});
+document.querySelectorAll('.rv,.rl,.rr').forEach(el=>io.observe(el));
+
+/* ─── COUNTERS ─── */
+function runCnt(el){const n=+el.dataset.cnt,step=n/(1700/16);let c=0;const t=setInterval(()=>{c=Math.min(c+step,n);el.textContent=Math.floor(c);if(c>=n)clearInterval(t);},16);}
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){runCnt(e.target);cio.unobserve(e.target);}}),{threshold:.5});
+document.querySelectorAll('[data-cnt]').forEach(el=>cio.observe(el));
+
+/* ─── MAGNETIC BUTTONS ─── */
+document.querySelectorAll('.mag').forEach(b=>{
+  b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;b.style.transform=`translate(${x*.24}px,${y*.24}px)`;b.style.transition='transform .09s';});
+  b.addEventListener('mouseleave',()=>{b.style.transform='';b.style.transition='transform .4s cubic-bezier(.34,1.56,.64,1)';});
+});
+
+/* ─── MODALS ─── */
+function openM(id){document.getElementById('m-'+id).classList.add('on');document.body.style.overflow='hidden';}
+function closeM(id){document.getElementById('m-'+id).classList.remove('on');document.body.style.overflow='';}
+function bgC(e,id){if(e.target===document.getElementById('m-'+id))closeM(id);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mbg.on').forEach(m=>{m.classList.remove('on');document.body.style.overflow='';});});
+
+/* ─── FORM ─── */
+function formSend(e){e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');e.target.reset();setTimeout(()=>t.classList.remove('show'),4500);}
+
+/* ─── SMOOTH SCROLL ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+
+/* ═══════════════════════════════════════════════════════
+   THREE.JS — REALISTIC RCC HUME PIPE
+   What makes this look like a real Hume pipe:
+   ─ Horizontal cylinder (pipe runs along Z-axis)
+   ─ Visible SOCKET/BELL END (wider diameter at front)
+   ─ Proper concrete grey (cool neutral, matte)
+   ─ Very dark bore (hollow centre looks black)
+   ─ Gold rebar running along pipe length in wall
+   ─ Hoop stirrups at regular intervals
+   ─ Rebar cross-section dots on end face
+   ─ Camera sees front face AND side cylinder body
+═══════════════════════════════════════════════════════ */
+(function(){
+  if(typeof THREE==='undefined')return;
+  const canvas=document.getElementById('pipe3d');
+  const par=canvas.parentElement;
+
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.Fog(0x2B2D33,18,38);
+
+  /* Camera angle: upper-right-front — shows socket face + side body */
+  const cam=new THREE.PerspectiveCamera(42,par.clientWidth/par.clientHeight,.1,100);
+  cam.position.set(4.2,2.8,10.0);
+  cam.lookAt(0.5,0,0);
+
+  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+  renderer.setSize(par.clientWidth,par.clientHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+
+  /* ── LIGHTING
+     Low ambient so the bore reads as dark/black.
+     Strong key light to make concrete look solid and 3-dimensional. */
+  scene.add(new THREE.AmbientLight(0xffffff,.18));
+  const kl=new THREE.DirectionalLight(0xE8E8E8,1.1);  /* key from upper-right */
+  kl.position.set(7,6,10);scene.add(kl);
+  const fl=new THREE.DirectionalLight(0xC8D4E8,.45);  /* cool fill from left */
+  fl.position.set(-6,2,4);scene.add(fl);
+  const rl=new THREE.DirectionalLight(0xC4881B,.9);   /* gold rim from below-back */
+  rl.position.set(0,-5,-8);scene.add(rl);
+
+  /* ── PIPE GROUP ── */
+  const grp=new THREE.Group();
+  scene.add(grp);
+
+  /* Pipe dimensions (NP-3 class proportions, scaled for display) */
+  const OR=1.78;   /* outer radius of pipe body */
+  const IR=1.26;   /* inner radius (bore) — wall = 0.52, ~29% of OD  */
+  const LEN=5.5;   /* pipe length (represents 2.5m) */
+  const WMR=(OR+IR)/2; /* wall mid-radius — where rebar lives */
+  const SKR=OR*1.18;   /* socket/bell end outer radius (18% wider) */
+  const SKL=0.52;      /* socket collar length */
+
+  /* ── MATERIALS ── */
+  /* Concrete body — cool grey, extremely matte (shininess 3 = like rough concrete) */
+  const cMat=new THREE.MeshPhongMaterial({
+    color:0x707070,
+    emissive:0x080808,
+    specular:0x0A0A0A,
+    shininess:2
+  });
+  /* Bore — near-black, seen from front (BackSide shows facing camera) */
+  const bMat=new THREE.MeshPhongMaterial({
+    color:0x141412,
+    emissive:0x060605,
+    specular:0x080807,
+    shininess:2,
+    side:THREE.BackSide
+  });
+  /* Socket collar — slightly darker cement */
+  const sMat=new THREE.MeshPhongMaterial({
+    color:0x626262,
+    emissive:0x060606,
+    specular:0x080808,
+    shininess:2
+  });
+  /* Gold rebar */
+  const rMat=new THREE.MeshPhongMaterial({
+    color:0xC4881B,
+    emissive:0x3A2806,
+    specular:0xFFE080,
+    shininess:125
+  });
+
+  /* ════════════════════════
+     PIPE BODY
+  ════════════════════════ */
+  /* Outer cylinder — concrete exterior surface (open-ended) */
+  const oCyl=new THREE.Mesh(new THREE.CylinderGeometry(OR,OR,LEN,72,1,true),cMat);
+  oCyl.rotation.x=Math.PI/2;grp.add(oCyl);
+
+  /* Inner cylinder — bore interior (BackSide so front-facing camera sees dark inside) */
+  const iCyl=new THREE.Mesh(new THREE.CylinderGeometry(IR,IR,LEN,72,1,true),bMat);
+  iCyl.rotation.x=Math.PI/2;grp.add(iCyl);
+
+  /* ════════════════════════
+     SOCKET / BELL END  (front, at +Z)
+     This is the key feature that makes this look
+     unmistakably like a Hume/RCC spigot-socket pipe.
+     The bell end is clearly WIDER than the body.
+  ════════════════════════ */
+  /* Socket collar — wider cylinder at front end */
+  const skCyl=new THREE.Mesh(new THREE.CylinderGeometry(SKR,SKR,SKL,72,1,true),sMat);
+  skCyl.rotation.x=Math.PI/2;
+  skCyl.position.z=LEN/2+SKL/2;
+  grp.add(skCyl);
+
+  /* Transition shoulder — tapered ring from body to socket */
+  const shMesh=new THREE.Mesh(new THREE.CylinderGeometry(SKR,OR,.12,72,1,true),sMat);
+  shMesh.rotation.x=Math.PI/2;
+  shMesh.position.z=LEN/2-.06;
+  grp.add(shMesh);
+
+  /* Socket face (outer ring visible from front — annular ring between IR and SKR) */
+  const skFace=new THREE.Mesh(new THREE.RingGeometry(IR,SKR,72),sMat);
+  skFace.position.z=LEN/2+SKL;
+  grp.add(skFace);
+
+  /* Body end ring (where body ends, before shoulder — annular ring between IR and OR) */
+  const bFace=new THREE.Mesh(new THREE.RingGeometry(IR,OR,72),cMat.clone());
+  bFace.position.z=LEN/2;
+  grp.add(bFace);
+
+  /* ════════════════════════
+     SPIGOT END (back, at -Z)
+     Just a plain end cap ring.
+  ════════════════════════ */
+  const spFace=new THREE.Mesh(new THREE.RingGeometry(IR,OR,72),cMat.clone());
+  spFace.position.z=-LEN/2;spFace.rotation.y=Math.PI;
+  grp.add(spFace);
+
+  /* ════════════════════════
+     8 LONGITUDINAL REBAR BARS
+     Run along the pipe length (Z-axis) in the wall
+  ════════════════════════ */
+  for(let i=0;i<8;i++){
+    const a=(i/8)*Math.PI*2;
+    const rb=new THREE.Mesh(new THREE.CylinderGeometry(.042,.042,LEN+SKL+.1,8),rMat);
+    rb.position.x=Math.cos(a)*WMR;
+    rb.position.y=Math.sin(a)*WMR;
+    rb.rotation.x=Math.PI/2; /* rotate from Y-axis to Z-axis */
+    rb.position.z=SKL/2;     /* offset slightly toward socket */
+    grp.add(rb);
+  }
+
+  /* ════════════════════════
+     HOOP STIRRUP RINGS (5)
+     Transverse reinforcement visible as rings
+  ════════════════════════ */
+  const hMat=new THREE.MeshPhongMaterial({
+    color:0xC4881B,emissive:0x2A1806,specular:0xFFD060,shininess:110,
+    transparent:true,opacity:.68
+  });
+  [-2.1,-1.05,0,1.05,2.1].forEach(z=>{
+    const h=new THREE.Mesh(new THREE.TorusGeometry(WMR,.024,8,48),hMat);
+    h.position.z=z;grp.add(h);
+  });
+
+  /* ════════════════════════
+     REBAR CROSS-SECTION DOTS
+     Visible on the socket face — gold dots showing
+     where rebar runs through the concrete wall
+  ════════════════════════ */
+  for(let i=0;i<8;i++){
+    const a=(i/8)*Math.PI*2;
+    const d=new THREE.Mesh(new THREE.CircleGeometry(.048,8),rMat.clone());
+    d.position.x=Math.cos(a)*WMR;
+    d.position.y=Math.sin(a)*WMR;
+    d.position.z=LEN/2+SKL+.003;
+    grp.add(d);
+  }
+
+  /* ════════════════════════
+     ATMOSPHERE PARTICLES
+  ════════════════════════ */
+  const pGeo=new THREE.BufferGeometry();
+  const pPos=new Float32Array(1200*3);
+  for(let i=0;i<pPos.length;i++)pPos[i]=(Math.random()-.5)*20;
+  pGeo.setAttribute('position',new THREE.BufferAttribute(pPos,3));
+  const pts=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xC4881B,size:.026,transparent:true,opacity:.2}));
+  scene.add(pts);
+
+  /* ════════════════════════
+     INTERACTION
+     Initial rotation shows socket end face (right) + body side (left)
+  ════════════════════════ */
+  let rotX=.10,rotY=.30;
+  let dragging=false,lmx=0,lmy=0,vx=0,vy=0,tmx=0,tmy=0,cmx=0,cmy=0;
+
+  canvas.addEventListener('mousemove',e=>{
+    if(dragging){vx+=(e.clientY-lmy)*.004;vy+=(e.clientX-lmx)*.004;lmx=e.clientX;lmy=e.clientY;}
+    else{tmx=(e.clientX/innerWidth-.5)*.5;tmy=-(e.clientY/innerHeight-.5)*.35;}
+  });
+  canvas.addEventListener('mousedown',e=>{dragging=true;lmx=e.clientX;lmy=e.clientY;canvas.style.cursor='grabbing';});
+  canvas.addEventListener('mouseup',()=>{dragging=false;canvas.style.cursor='grab';});
+  canvas.addEventListener('mouseleave',()=>{dragging=false;});
+  canvas.style.cursor='grab';
+  let ltx=0,lty=0;
+  canvas.addEventListener('touchstart',e=>{ltx=e.touches[0].clientX;lty=e.touches[0].clientY;},{passive:true});
+  canvas.addEventListener('touchmove',e=>{e.preventDefault();vx+=(e.touches[0].clientY-lty)*.005;vy+=(e.touches[0].clientX-ltx)*.005;ltx=e.touches[0].clientX;lty=e.touches[0].clientY;},{passive:false});
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if(dragging){rotX+=vx;rotY+=vy;vx*=.88;vy*=.88;}
+    else{cmx+=(tmx-cmx)*.04;cmy+=(tmy-cmy)*.04;rotY+=.002;}
+    grp.rotation.x=rotX+(dragging?0:cmy);
+    grp.rotation.y=rotY+(dragging?0:cmx*.45);
+    pts.rotation.y+=.0004;
+    /* subtle moving light to show concrete texture */
+    kl.position.x=6+Math.sin(Date.now()*.0004)*1.8;
+    kl.position.y=5+Math.cos(Date.now()*.0003)*1.2;
+    renderer.render(scene,cam);
+  }
+  animate();
+
+  window.addEventListener('resize',()=>{
+    const w=par.clientWidth,h=par.clientHeight;
+    cam.aspect=w/h;cam.updateProjectionMatrix();
+    renderer.setSize(w,h);
+  });
+})();
+</script>
+</body>
+</html>
