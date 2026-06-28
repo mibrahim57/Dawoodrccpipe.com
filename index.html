@@ -617,16 +617,16 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
           <input type="hidden" name="form-name" value="quote-request">
           <input type="hidden" name="bot-field" style="display:none">
           <div class="frow">
-            <div class="fg"><label>Full Name *</label><input class="finp" type="text" placeholder="Ahmed Khan" required></div>
-            <div class="fg"><label>Company</label><input class="finp" type="text" placeholder="Your Organisation"></div>
+            <div class="fg"><label>Full Name *</label><input class="finp" type="text" name="name" placeholder="Ahmed Khan" required></div>
+            <div class="fg"><label>Company</label><input class="finp" type="text" name="company" placeholder="Your Organisation"></div>
           </div>
           <div class="frow">
-            <div class="fg"><label>Email Address *</label><input class="finp" type="email" placeholder="ahmed@company.pk" required></div>
-            <div class="fg"><label>Phone / WhatsApp *</label><input class="finp" type="tel" placeholder="+92 300 000 0000" required></div>
+            <div class="fg"><label>Email Address *</label><input class="finp" type="email" name="email" placeholder="ahmed@company.pk" required></div>
+            <div class="fg"><label>Phone / WhatsApp *</label><input class="finp" type="tel" name="phone" placeholder="+92 300 000 0000" required></div>
           </div>
           <div class="fg">
             <label>Product Required</label>
-            <select class="finp">
+            <select class="finp" name="product">
               <option value="">Select product type...</option>
               <option>NP-2 Hume Pipes (300–1200mm)</option>
               <option>NP-3 Heavy Duty (300–1800mm)</option>
@@ -638,10 +638,10 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
             </select>
           </div>
           <div class="frow">
-            <div class="fg"><label>Diameter Required</label><input class="finp" type="text" placeholder="e.g. 600mm, 1200mm"></div>
-            <div class="fg"><label>Quantity</label><input class="finp" type="text" placeholder="e.g. 500 pipes / 2km"></div>
+            <div class="fg"><label>Diameter Required</label><input class="finp" type="text" name="diameter" placeholder="e.g. 600mm, 1200mm"></div>
+            <div class="fg"><label>Quantity</label><input class="finp" type="text" name="quantity" placeholder="e.g. 500 pipes / 2km"></div>
           </div>
-          <div class="fg"><label>Project Details</label><textarea class="finp" placeholder="Project location, type, timeline, special specifications..."></textarea></div>
+          <div class="fg"><label>Project Details</label><textarea class="finp" name="message" placeholder="Project location, type, timeline, special specifications..."></textarea></div>
           <button type="submit" class="btn-sub">Submit Quote Request &rarr;</button>
         </form>
       </div>
