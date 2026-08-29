@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import Script from "next/script";
+import ClientMarquee from "./ClientMarquee";
 
 export const dynamic = "force-static";
 
@@ -51,6 +52,7 @@ function extractLegacyWebsite() {
 
   const markup = body
     .replace(/<script>[\s\S]*?<\/script>/gi, "")
+    .replace(/<!-- CLIENTS -->[\s\S]*?<\/section>\s*(?=<!-- FOOTER -->)/i, "")
     .replaceAll('src="images/', 'src="/images/')
     .replaceAll("src='images/", "src='/images/");
 
@@ -63,12 +65,23 @@ function extractLegacyWebsite() {
 
 export default function Home() {
   const website = extractLegacyWebsite();
+  const footerIndex = website.markup.indexOf("<!-- FOOTER -->");
+  const beforeFooter =
+    footerIndex >= 0 ? website.markup.slice(0, footerIndex) : website.markup;
+  const footerMarkup =
+    footerIndex >= 0 ? website.markup.slice(footerIndex) : "";
 
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: website.css }} />
       <style dangerouslySetInnerHTML={{ __html: heroVisibilityFix }} />
-      <main dangerouslySetInnerHTML={{ __html: website.markup }} />
+      <main>
+        <div dangerouslySetInnerHTML={{ __html: beforeFooter }} />
+        <ClientMarquee />
+        {footerMarkup ? (
+          <div dangerouslySetInnerHTML={{ __html: footerMarkup }} />
+        ) : null}
+      </main>
       <Script
         id="dawood-rcc-interactions"
         strategy="afterInteractive"
