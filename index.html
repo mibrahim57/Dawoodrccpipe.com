@@ -788,9 +788,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   const OR=1.5;    /* outer radius of pipe body */
   const IR=1.02;   /* inner radius (bore) — thick RCC wall, ~32% of OD */
   const LEN=9.8;   /* balanced RCC pipe product proportion */
-  const WMR=(OR+IR)/2; /* wall mid-radius — where rebar lives */
   const SKR=OR*1.15;   /* socket/bell end outer radius */
   const SKL=0.58;      /* socket collar length */
+  const SR=IR*1.28;    /* socket throat radius: wider recessed mouth */
 
   /* ── MATERIALS ── */
   /* Concrete body — cool grey, extremely matte (shininess 3 = like rough concrete) */
@@ -810,17 +810,23 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   });
   /* Socket collar — slightly darker cement */
   const sMat=new THREE.MeshPhongMaterial({
-    color:0x626262,
+    color:0x77736D,
     emissive:0x060606,
     specular:0x080808,
     shininess:2
   });
-  /* Gold rebar */
-  const rMat=new THREE.MeshPhongMaterial({
-    color:0xC4881B,
-    emissive:0x3A2806,
-    specular:0xFFE080,
-    shininess:125
+  const lipMat=new THREE.MeshPhongMaterial({
+    color:0x8D8982,
+    emissive:0x070707,
+    specular:0x101010,
+    shininess:3
+  });
+  const recessMat=new THREE.MeshPhongMaterial({
+    color:0x4A4946,
+    emissive:0x050505,
+    specular:0x060606,
+    shininess:2,
+    side:THREE.BackSide
   });
 
   /* ════════════════════════
@@ -852,15 +858,30 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   shMesh.position.z=LEN/2-.06;
   grp.add(shMesh);
 
-  /* Socket face (outer ring visible from front — annular ring between IR and SKR) */
-  const skFace=new THREE.Mesh(new THREE.RingGeometry(IR,SKR,72),sMat);
+  /* Socket face: thick concrete bell ring with a wider recessed mouth */
+  const skFace=new THREE.Mesh(new THREE.RingGeometry(SR,SKR,96),sMat);
   skFace.position.z=LEN/2+SKL;
   grp.add(skFace);
 
-  /* Body end ring (where body ends, before shoulder — annular ring between IR and OR) */
-  const bFace=new THREE.Mesh(new THREE.RingGeometry(IR,OR,72),cMat.clone());
-  bFace.position.z=LEN/2;
-  grp.add(bFace);
+  /* Recessed throat wall inside the bell socket */
+  const socketThroat=new THREE.Mesh(new THREE.CylinderGeometry(SR,SR,SKL*.86,96,1,true),recessMat);
+  socketThroat.rotation.x=Math.PI/2;
+  socketThroat.position.z=LEN/2+SKL*.56;
+  grp.add(socketThroat);
+
+  /* Inner shoulder ledge where the socket steps down into the bore */
+  const innerStep=new THREE.Mesh(new THREE.RingGeometry(IR,SR,96),lipMat);
+  innerStep.position.z=LEN/2+SKL*.16;
+  grp.add(innerStep);
+
+  /* Subtle rounded concrete lips catch light like a precast RCC socket */
+  const outerLip=new THREE.Mesh(new THREE.TorusGeometry(SKR,.035,10,96),lipMat);
+  outerLip.position.z=LEN/2+SKL+.01;
+  grp.add(outerLip);
+
+  const innerLip=new THREE.Mesh(new THREE.TorusGeometry(SR,.032,10,96),lipMat);
+  innerLip.position.z=LEN/2+SKL+.018;
+  grp.add(innerLip);
 
   /* ════════════════════════
      SPIGOT END (back, at -Z)
@@ -871,45 +892,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   grp.add(spFace);
 
   /* ════════════════════════
-     8 LONGITUDINAL REBAR BARS
-     Run along the pipe length (Z-axis) in the wall
-  ════════════════════════ */
-  for(let i=0;i<8;i++){
-    const a=(i/8)*Math.PI*2;
-    const rb=new THREE.Mesh(new THREE.CylinderGeometry(.042,.042,LEN+SKL+.1,8),rMat);
-    rb.position.x=Math.cos(a)*WMR;
-    rb.position.y=Math.sin(a)*WMR;
-    rb.rotation.x=Math.PI/2; /* rotate from Y-axis to Z-axis */
-    rb.position.z=SKL/2;     /* offset slightly toward socket */
-    grp.add(rb);
-  }
-
-  /* ════════════════════════
-     HOOP STIRRUP RINGS (5)
-     Transverse reinforcement visible as rings
+     SUBTLE CASTING BANDS
+     Real product view: concrete surface only, no exposed steel.
   ════════════════════════ */
   const hMat=new THREE.MeshPhongMaterial({
-    color:0xC4881B,emissive:0x2A1806,specular:0xFFD060,shininess:110,
-    transparent:true,opacity:.68
+    color:0x56544F,emissive:0x050505,specular:0x070707,shininess:2,
+    transparent:true,opacity:.32
   });
-  [-4.1,-2.75,-1.4,0,1.4,2.75,4.1].forEach(z=>{
-    const h=new THREE.Mesh(new THREE.TorusGeometry(WMR,.024,8,48),hMat);
+  [-3.4,-1.7,0,1.7,3.4].forEach(z=>{
+    const h=new THREE.Mesh(new THREE.TorusGeometry(OR*1.003,.012,8,72),hMat);
     h.position.z=z;grp.add(h);
   });
-
-  /* ════════════════════════
-     REBAR CROSS-SECTION DOTS
-     Visible on the socket face — gold dots showing
-     where rebar runs through the concrete wall
-  ════════════════════════ */
-  for(let i=0;i<8;i++){
-    const a=(i/8)*Math.PI*2;
-    const d=new THREE.Mesh(new THREE.CircleGeometry(.048,8),rMat.clone());
-    d.position.x=Math.cos(a)*WMR;
-    d.position.y=Math.sin(a)*WMR;
-    d.position.z=LEN/2+SKL+.003;
-    grp.add(d);
-  }
 
   /* ════════════════════════
      ATMOSPHERE PARTICLES
