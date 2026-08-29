@@ -762,8 +762,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 
   /* Camera angle: upper-right-front — shows socket face + side body */
   const cam=new THREE.PerspectiveCamera(36,par.clientWidth/par.clientHeight,.1,100);
-  cam.position.set(6.6,2.7,12.6);
-  cam.lookAt(0.15,0,0);
+  cam.position.set(5.8,2.5,11.4);
+  cam.lookAt(0.35,0,0);
 
   const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setSize(par.clientWidth,par.clientHeight);
@@ -785,49 +785,75 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   scene.add(grp);
 
   /* Pipe dimensions (NP-3 class proportions, scaled for display) */
-  const OR=1.5;    /* outer radius of pipe body */
-  const IR=1.02;   /* inner radius (bore) — thick RCC wall, ~32% of OD */
-  const LEN=9.8;   /* balanced RCC pipe product proportion */
-  const SKR=OR*1.15;   /* socket/bell end outer radius */
-  const SKL=0.58;      /* socket collar length */
-  const SR=IR*1.28;    /* socket throat radius: wider recessed mouth */
+  const OR=1.48;   /* outer radius of pipe body */
+  const IR=.96;    /* inner radius (bore) — thick RCC wall */
+  const LEN=9.4;   /* balanced RCC pipe product proportion */
+  const SKR=OR*1.24;   /* broad socket/bell lip like precast RCC pipe */
+  const SKL=.92;       /* deeper socket collar */
+  const SR=IR*1.34;    /* wide recessed mouth before the bore step */
 
   /* ── MATERIALS ── */
   /* Concrete body — cool grey, extremely matte (shininess 3 = like rough concrete) */
   const cMat=new THREE.MeshPhongMaterial({
-    color:0x707070,
-    emissive:0x080808,
-    specular:0x0A0A0A,
+    color:0xB6AEA2,
+    emissive:0x100E0B,
+    specular:0x12100D,
     shininess:2
   });
   /* Bore — near-black, seen from front (BackSide shows facing camera) */
   const bMat=new THREE.MeshPhongMaterial({
-    color:0x141412,
-    emissive:0x060605,
-    specular:0x080807,
+    color:0x2C2924,
+    emissive:0x050403,
+    specular:0x060504,
     shininess:2,
     side:THREE.BackSide
   });
   /* Socket collar — slightly darker cement */
   const sMat=new THREE.MeshPhongMaterial({
-    color:0x77736D,
-    emissive:0x060606,
-    specular:0x080808,
+    color:0xAFA698,
+    emissive:0x0D0B08,
+    specular:0x12100D,
     shininess:2
   });
   const lipMat=new THREE.MeshPhongMaterial({
-    color:0x8D8982,
-    emissive:0x070707,
-    specular:0x101010,
+    color:0xC2B8A8,
+    emissive:0x0F0D09,
+    specular:0x17140F,
     shininess:3
   });
   const recessMat=new THREE.MeshPhongMaterial({
-    color:0x4A4946,
-    emissive:0x050505,
-    specular:0x060606,
+    color:0x6F6558,
+    emissive:0x070504,
+    specular:0x090706,
     shininess:2,
     side:THREE.BackSide
   });
+
+  function addConcreteTexture(mat,base=185,grain=44){
+    const size=128;
+    const c=document.createElement('canvas');
+    c.width=size;c.height=size;
+    const ctx=c.getContext('2d');
+    const img=ctx.createImageData(size,size);
+    for(let i=0;i<img.data.length;i+=4){
+      const n=base+(Math.random()-.5)*grain+(Math.random()-.5)*grain*.5;
+      img.data[i]=Math.max(0,Math.min(255,n+8));
+      img.data[i+1]=Math.max(0,Math.min(255,n));
+      img.data[i+2]=Math.max(0,Math.min(255,n-12));
+      img.data[i+3]=255;
+    }
+    ctx.putImageData(img,0,0);
+    const tex=new THREE.CanvasTexture(c);
+    tex.wrapS=THREE.RepeatWrapping;
+    tex.wrapT=THREE.RepeatWrapping;
+    tex.repeat.set(3.8,1.2);
+    mat.map=tex;
+    mat.needsUpdate=true;
+  }
+  addConcreteTexture(cMat,182,38);
+  addConcreteTexture(sMat,176,46);
+  addConcreteTexture(lipMat,194,40);
+  addConcreteTexture(recessMat,112,34);
 
   /* ════════════════════════
      PIPE BODY
@@ -847,13 +873,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
      The bell end is clearly WIDER than the body.
   ════════════════════════ */
   /* Socket collar — wider cylinder at front end */
-  const skCyl=new THREE.Mesh(new THREE.CylinderGeometry(SKR,SKR,SKL,72,1,true),sMat);
+  const skCyl=new THREE.Mesh(new THREE.CylinderGeometry(SKR,SKR,SKL,96,1,true),sMat);
   skCyl.rotation.x=Math.PI/2;
   skCyl.position.z=LEN/2+SKL/2;
   grp.add(skCyl);
 
   /* Transition shoulder — tapered ring from body to socket */
-  const shMesh=new THREE.Mesh(new THREE.CylinderGeometry(SKR,OR,.12,72,1,true),sMat);
+  const shMesh=new THREE.Mesh(new THREE.CylinderGeometry(SKR,OR,.22,96,1,true),sMat);
   shMesh.rotation.x=Math.PI/2;
   shMesh.position.z=LEN/2-.06;
   grp.add(shMesh);
@@ -874,12 +900,16 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   innerStep.position.z=LEN/2+SKL*.16;
   grp.add(innerStep);
 
+  const stepLip=new THREE.Mesh(new THREE.TorusGeometry(IR,.026,10,96),lipMat);
+  stepLip.position.z=LEN/2+SKL*.17;
+  grp.add(stepLip);
+
   /* Subtle rounded concrete lips catch light like a precast RCC socket */
-  const outerLip=new THREE.Mesh(new THREE.TorusGeometry(SKR,.035,10,96),lipMat);
+  const outerLip=new THREE.Mesh(new THREE.TorusGeometry(SKR,.05,12,96),lipMat);
   outerLip.position.z=LEN/2+SKL+.01;
   grp.add(outerLip);
 
-  const innerLip=new THREE.Mesh(new THREE.TorusGeometry(SR,.032,10,96),lipMat);
+  const innerLip=new THREE.Mesh(new THREE.TorusGeometry(SR,.042,12,96),lipMat);
   innerLip.position.z=LEN/2+SKL+.018;
   grp.add(innerLip);
 
