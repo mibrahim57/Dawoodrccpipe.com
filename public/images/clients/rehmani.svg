@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" role="img" aria-labelledby="t d">
+  <title id="t">Rehmani Group of Companies</title><desc id="d">Rehmani Group of Companies logo mark</desc>
+  <rect width="220" height="120" rx="16" fill="#fff"/>
+  <path d="M45 78V36h48v13H58v29z" fill="none" stroke="#0d594e" stroke-width="8"/>
+  <path d="M67 66V48h38v12H79v18z" fill="none" stroke="#bf8435" stroke-width="8"/>
+  <text x="122" y="58" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#0d594e">REHMANI</text>
+  <text x="122" y="76" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="#777">GROUP OF COMPANIES</text>
+</svg>

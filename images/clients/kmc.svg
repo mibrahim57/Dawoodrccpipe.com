@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" role="img" aria-labelledby="t d">
+  <title id="t">Karachi Metropolitan Corporation</title><desc id="d">Karachi Metropolitan Corporation logo mark</desc>
+  <rect width="220" height="120" rx="16" fill="#fff"/>
+  <circle cx="54" cy="60" r="31" fill="#eef8ef" stroke="#068215" stroke-width="5"/>
+  <path d="M39 75h30V45H50v11h10v8H39z" fill="#068215"/>
+  <text x="96" y="54" font-family="Arial, sans-serif" font-size="17" font-weight="900" fill="#068215">KARACHI</text>
+  <text x="96" y="75" font-family="Arial, sans-serif" font-size="15" font-weight="900" fill="#068215">METROPOLITAN</text>
+  <text x="96" y="93" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#068215">CORPORATION</text>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" role="img" aria-labelledby="t d">
+  <title id="t">A&amp;D Associates</title><desc id="d">A and D Associates logo mark</desc>
+  <rect width="220" height="120" rx="16" fill="#fff"/>
+  <rect x="45" y="14" width="64" height="92" rx="5" fill="#35697a"/>
+  <path d="M74 33l-19 27 19 27 19-27z" fill="none" stroke="#e7eeee" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M91 33v54l23-27z" fill="none" stroke="#e7eeee" stroke-width="8" stroke-linejoin="round"/>
+  <text x="128" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="900" fill="#35697a">A&amp;D</text>
+  <text x="128" y="78" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#2d4650">ASSOCIATES</text>
+</svg>

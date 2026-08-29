@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 120" role="img" aria-labelledby="t d">
+  <title id="t">Client M Logo</title><desc id="d">Blue corporate M logo mark</desc>
+  <rect width="220" height="120" rx="16" fill="#fff"/>
+  <rect x="35" y="26" width="150" height="68" rx="30" fill="#07509a"/>
+  <path d="M66 78l18-36h20L86 78zm54 0l18-36h20l-18 36z" fill="#d7ecff"/>
+  <path d="M84 42h74l-18 36H66z" fill="none" stroke="#0b63b6" stroke-width="3" opacity=".35"/>
+</svg>
