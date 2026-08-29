@@ -6,7 +6,7 @@ const clients = [
   "Indusmen Corporation",
   "Civil Consultants",
   "A&D Associates",
-  "Sindh Government Employees Cooperative Housing Society Limited",
+  "Sindh Government Employees Co-operative Housing Society Limited",
   "R.M. Gulistan Engineers & Contractors",
   "Rehmani Group of Companies",
   "Burki Constructions",
@@ -16,7 +16,7 @@ const clients = [
   "Irfan Limited",
   "Sultan Brothers Limited",
   "Pakistan Defence Officers Housing Authority, Karachi",
-  "Bahria Town",
+  "Bahria Town Karachi",
   "Karachi Metropolitan Corporation",
   "Karachi Port Trust",
   "Frontier Works Organization"
