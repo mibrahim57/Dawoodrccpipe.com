@@ -328,6 +328,8 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
 .foot-b p{font-size:.71rem;color:rgba(255,255,255,.2)}
 .certs{display:flex;gap:.4rem;flex-wrap:wrap}
 .cert{font-size:.58rem;padding:.2rem .52rem;border:1px solid var(--dbdr);border-radius:3px;color:rgba(196,136,27,.48)}
+.footer-credit{margin-left:auto;font-size:.71rem;color:rgba(255,255,255,.2);white-space:nowrap}
+.footer-credit span{color:var(--gold)}
 
 /* FLOATERS */
 .backtop{position:fixed;bottom:2rem;left:2rem;z-index:1200;width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--dark);font-size:.95rem;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(8px);pointer-events:none;transition:all .3s var(--ease);box-shadow:0 5px 18px rgba(196,136,27,.4)}
@@ -349,6 +351,7 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
   .pj:nth-child(1){grid-column:1/2;height:260px}.pj:nth-child(6){grid-column:1/2;height:260px}
   .pgr{grid-template-columns:1fr 1fr}.pj{height:240px!important}
   .foot-g{grid-template-columns:1fr 1fr;gap:2rem}
+  .footer-credit{margin-left:0;white-space:normal}
 }
 @media(max-width:768px){
   html{scroll-padding-top:0}
@@ -766,6 +769,7 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
     <div class="foot-b">
       <p>&copy; 2024 Dawood RCC Pipe Industry, Karachi, Pakistan. All rights reserved. Established 1967.</p>
       <div class="certs"><span class="cert">PSQCA</span><span class="cert">ISO 9001</span><span class="cert">ASTM C-76</span><span class="cert">BS EN 1916</span></div>
+      <div class="footer-credit">Designed by <span>Dawood Technologies</span></div>
     </div>
   </div>
 </footer>
