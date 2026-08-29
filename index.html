@@ -761,9 +761,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   scene.fog=new THREE.Fog(0x2B2D33,18,38);
 
   /* Camera angle: upper-right-front — shows socket face + side body */
-  const cam=new THREE.PerspectiveCamera(42,par.clientWidth/par.clientHeight,.1,100);
-  cam.position.set(4.2,2.8,10.0);
-  cam.lookAt(0.5,0,0);
+  const cam=new THREE.PerspectiveCamera(38,par.clientWidth/par.clientHeight,.1,100);
+  cam.position.set(5.2,3.0,13.2);
+  cam.lookAt(0.2,0,0);
 
   const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setSize(par.clientWidth,par.clientHeight);
@@ -785,12 +785,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   scene.add(grp);
 
   /* Pipe dimensions (NP-3 class proportions, scaled for display) */
-  const OR=1.78;   /* outer radius of pipe body */
-  const IR=1.26;   /* inner radius (bore) — wall = 0.52, ~29% of OD  */
-  const LEN=5.5;   /* pipe length (represents 2.5m) */
+  const OR=1.62;   /* outer radius of pipe body */
+  const IR=1.12;   /* inner radius (bore) — thick RCC wall, ~31% of OD */
+  const LEN=8.8;   /* longer 2.5m-style RCC pipe proportion */
   const WMR=(OR+IR)/2; /* wall mid-radius — where rebar lives */
-  const SKR=OR*1.18;   /* socket/bell end outer radius (18% wider) */
-  const SKL=0.52;      /* socket collar length */
+  const SKR=OR*1.14;   /* socket/bell end outer radius */
+  const SKL=0.62;      /* socket collar length */
 
   /* ── MATERIALS ── */
   /* Concrete body — cool grey, extremely matte (shininess 3 = like rough concrete) */
@@ -892,7 +892,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     color:0xC4881B,emissive:0x2A1806,specular:0xFFD060,shininess:110,
     transparent:true,opacity:.68
   });
-  [-2.1,-1.05,0,1.05,2.1].forEach(z=>{
+  [-3.6,-2.4,-1.2,0,1.2,2.4,3.6].forEach(z=>{
     const h=new THREE.Mesh(new THREE.TorusGeometry(WMR,.024,8,48),hMat);
     h.position.z=z;grp.add(h);
   });
