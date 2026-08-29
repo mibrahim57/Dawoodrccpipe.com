@@ -5,12 +5,8 @@ import Script from "next/script";
 export const dynamic = "force-static";
 
 const heroVisibilityFix = `
-#hero .hero-left {
-  padding-top: 17.4rem !important;
-}
-
 #hero .pill {
-  margin-top: 2.4rem !important;
+  margin-top: 0 !important;
   margin-bottom: 2rem !important;
   padding: 0.86rem 1.45rem !important;
   gap: 0.75rem !important;
@@ -32,19 +28,9 @@ const heroVisibilityFix = `
   line-height: 1.25 !important;
 }
 
-@media (max-width: 1080px) {
-  #hero .hero-left {
-    padding-top: 17rem !important;
-  }
-}
-
 @media (max-width: 768px) {
-  #hero .hero-left {
-    padding-top: 16.2rem !important;
-  }
-
   #hero .pill {
-    margin-top: 2.1rem !important;
+    margin-top: 0 !important;
     padding: 0.78rem 1rem !important;
   }
 
