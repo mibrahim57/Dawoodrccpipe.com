@@ -761,9 +761,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   scene.fog=new THREE.Fog(0x2B2D33,18,38);
 
   /* Camera angle: upper-right-front — shows socket face + side body */
-  const cam=new THREE.PerspectiveCamera(36,par.clientWidth/par.clientHeight,.1,100);
-  cam.position.set(5.8,2.5,11.4);
-  cam.lookAt(0.35,0,0);
+  const cam=new THREE.PerspectiveCamera(34,par.clientWidth/par.clientHeight,.1,100);
+  cam.position.set(6.4,2.7,13.2);
+  cam.lookAt(0.55,-0.05,0);
 
   const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setSize(par.clientWidth,par.clientHeight);
@@ -782,6 +782,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 
   /* ── PIPE GROUP ── */
   const grp=new THREE.Group();
+  grp.position.set(.35,-.08,0);
   scene.add(grp);
 
   /* Pipe dimensions (NP-3 class proportions, scaled for display) */
