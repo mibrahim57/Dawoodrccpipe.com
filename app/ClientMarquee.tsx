@@ -36,7 +36,7 @@ function ClientItems({ hidden = false }: { hidden?: boolean }) {
 
 export default function ClientMarquee() {
   return (
-    <section className="client-marquee-section" aria-label="Clients">
+    <section id="clients" className="client-marquee-section" aria-label="Clients">
       <div className="client-marquee-head wrap">
         <span className="eyebrow">Trusted By</span>
         <h2>Our Clients</h2>
