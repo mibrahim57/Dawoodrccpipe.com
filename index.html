@@ -41,7 +41,7 @@ nav.on{background:#ffffff;box-shadow:0 2px 28px rgba(0,0,0,.14);padding:.48rem 3
 .logo:hover .logo-icon{opacity:.9;transform:translateY(-1px)}
 nav.on .logo-icon{height:108px;width:108px}
 nav.on .lname{font-size:1.34rem}
-.nl{list-style:none;display:flex;align-items:center}
+.nl{list-style:none;display:flex;align-items:center;position:absolute;left:50%;transform:translateX(-50%)}
 .nl a{font-size:.77rem;font-weight:500;color:var(--dark);padding:.35rem .72rem;position:relative;transition:color .2s}
 .nl a::after{content:'';position:absolute;bottom:.15rem;left:.72rem;right:.72rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s}
 .nl a:hover,.nl a.a{color:var(--gold)}.nl a:hover::after,.nl a.a::after{transform:scaleX(1)}
@@ -339,7 +339,7 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
   .lname{font-size:1.12rem}
   nav.on .lname{font-size:1.04rem}
   .lsub{font-size:.5rem;letter-spacing:.1em}
-  .nl{display:none}.ham{display:flex}
+  .nl{display:none;position:static;transform:none}.ham{display:flex}
   .wrap{padding:0 1.3rem}
   #hero{padding-top:142px;margin-top:-142px}
   .hero-left{padding:14.4rem 1.3rem 2.4rem}.pill{max-width:100%;padding:.68rem 1rem}.pill span{font-size:.78rem;letter-spacing:.055em}.h1{font-size:2.7rem}
