@@ -761,9 +761,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   scene.fog=new THREE.Fog(0x2B2D33,18,38);
 
   /* Camera angle: upper-right-front — shows socket face + side body */
-  const cam=new THREE.PerspectiveCamera(34,par.clientWidth/par.clientHeight,.1,100);
-  cam.position.set(9.2,3.0,15.2);
-  cam.lookAt(0,0,0);
+  const cam=new THREE.PerspectiveCamera(36,par.clientWidth/par.clientHeight,.1,100);
+  cam.position.set(6.6,2.7,12.6);
+  cam.lookAt(0.15,0,0);
 
   const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
   renderer.setSize(par.clientWidth,par.clientHeight);
@@ -785,12 +785,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
   scene.add(grp);
 
   /* Pipe dimensions (NP-3 class proportions, scaled for display) */
-  const OR=1.34;   /* outer radius of pipe body */
-  const IR=.9;     /* inner radius (bore) — thick RCC wall, ~33% of OD */
-  const LEN=13.2;  /* full-length 2.5m-style RCC pipe proportion */
+  const OR=1.5;    /* outer radius of pipe body */
+  const IR=1.02;   /* inner radius (bore) — thick RCC wall, ~32% of OD */
+  const LEN=9.8;   /* balanced RCC pipe product proportion */
   const WMR=(OR+IR)/2; /* wall mid-radius — where rebar lives */
-  const SKR=OR*1.14;   /* socket/bell end outer radius */
-  const SKL=0.62;      /* socket collar length */
+  const SKR=OR*1.15;   /* socket/bell end outer radius */
+  const SKL=0.58;      /* socket collar length */
 
   /* ── MATERIALS ── */
   /* Concrete body — cool grey, extremely matte (shininess 3 = like rough concrete) */
@@ -892,7 +892,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
     color:0xC4881B,emissive:0x2A1806,specular:0xFFD060,shininess:110,
     transparent:true,opacity:.68
   });
-  [-5.6,-4.2,-2.8,-1.4,0,1.4,2.8,4.2,5.6].forEach(z=>{
+  [-4.1,-2.75,-1.4,0,1.4,2.75,4.1].forEach(z=>{
     const h=new THREE.Mesh(new THREE.TorusGeometry(WMR,.024,8,48),hMat);
     h.position.z=z;grp.add(h);
   });
