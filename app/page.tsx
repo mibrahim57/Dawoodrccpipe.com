@@ -44,7 +44,12 @@ const heroVisibilityFix = `
 
 function extractLegacyWebsite() {
   const source = readFileSync(path.join(process.cwd(), "index.html"), "utf8");
-  const css = source.match(/<style>([\s\S]*?)<\/style>/i)?.[1] ?? "";
+  const css = (source.match(/<style>([\s\S]*?)<\/style>/i)?.[1] ?? "")
+    .replace(/\/\* CLIENTS MARQUEE \*\/[\s\S]*?(?=\/\* WRAP \+ UTILS \*\/)/i, "")
+    .replace(
+      /\s*\.clients-marquee\{padding:2rem 0\}\.clients-rail::before,\.clients-rail::after\{width:44px\}\.clients-track\{animation-duration:48s\}\.clients-set\{gap:\.7rem;padding-right:\.7rem\}\.client-logo-card,\.client-name-card\{height:64px\}\.client-logo-card\{width:150px;padding:\.58rem \.85rem\}\.client-logo-card img\{max-width:116px;max-height:42px\}\.client-name-card\{min-width:210px;padding:\.75rem 1rem;font-size:\.68rem\}/,
+      ""
+    );
   const body = source.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1] ?? "";
   const scripts = Array.from(body.matchAll(/<script>([\s\S]*?)<\/script>/gi)).map(
     (match) => match[1]

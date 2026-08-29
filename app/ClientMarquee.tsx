@@ -1,104 +1,48 @@
-import Image from "next/image";
-
-const logoClients = [
-  {
-    src: "/images/clients/ppra.svg",
-    alt: "Public Procurement Regulatory Authority"
-  },
-  {
-    src: "/images/clients/karachi-water.svg",
-    alt: "Karachi Water and Sewerage Corporation"
-  },
-  {
-    src: "/images/clients/kda.svg",
-    alt: "Karachi Development Authority"
-  },
-  {
-    src: "/images/clients/m-logo.svg",
-    alt: "Client logo"
-  },
-  {
-    src: "/images/clients/ad-associates.svg",
-    alt: "A and D Associates"
-  },
-  {
-    src: "/images/clients/rehmani.svg",
-    alt: "Rehmani Group of Companies"
-  },
-  {
-    src: "/images/clients/pdoha.svg",
-    alt: "Pakistan Defence Officers Housing Authority"
-  },
-  {
-    src: "/images/clients/kmc.svg",
-    alt: "Karachi Metropolitan Corporation"
-  },
-  {
-    src: "/images/clients/bahria-town.svg",
-    alt: "Bahria Town"
-  }
-];
-
-const nameClients = [
+const clients = [
+  "Public Procurement Regulatory Authority (PPRA)",
+  "Karachi Water & Sewerage Corporation",
+  "Karachi Development Authority (KDA)",
+  "Maqbool Associates",
   "Indusmen Corporation",
-  "Civil Consultant",
-  "Sind Government Employees Cooperative Housing Society Ltd.",
+  "Civil Consultants",
+  "A&D Associates",
+  "Sindh Government Employees Cooperative Housing Society Limited",
   "R.M. Gulistan Engineers & Contractors",
+  "Rehmani Group of Companies",
+  "Burki Constructions",
   "Heryana Construction",
-  "Al-Asif Sugar Mills Ltd.",
-  "Co-operative Engineers Ltd.",
+  "Al-Asif Sugar Mills Limited",
+  "Co-operative Engineers Limited",
   "Irfan Limited",
-  "Muhandaseen Limited",
-  "Sultan Brothers Ltd.",
+  "Sultan Brothers Limited",
+  "Pakistan Defence Officers Housing Authority, Karachi",
+  "Bahria Town",
+  "Karachi Metropolitan Corporation",
   "Karachi Port Trust",
   "Frontier Works Organization"
 ];
 
-const clients = nameClients.flatMap((name, index) => [
-  {
-    type: "logo" as const,
-    key: `logo-${index}`,
-    ...logoClients[index % logoClients.length]
-  },
-  {
-    type: "name" as const,
-    key: `name-${index}`,
-    name
-  }
-]);
-
 function ClientItems({ hidden = false }: { hidden?: boolean }) {
   return (
-    <div className="clients-set" aria-hidden={hidden || undefined}>
-      {clients.map((client) =>
-        client.type === "logo" ? (
-          <span className="client-logo-card" key={client.key}>
-            <Image
-              src={client.src}
-              alt={hidden ? "" : client.alt}
-              width={150}
-              height={50}
-            />
-          </span>
-        ) : (
-          <span className="client-name-card" key={client.key}>
-            {client.name}
-          </span>
-        )
-      )}
+    <div className="client-marquee-set" aria-hidden={hidden || undefined}>
+      {clients.map((client) => (
+        <span className="client-marquee-name" key={client}>
+          {client}
+        </span>
+      ))}
     </div>
   );
 }
 
 export default function ClientMarquee() {
   return (
-    <section className="clients-marquee" aria-label="Clients">
-      <div className="clients-head wrap">
+    <section className="client-marquee-section" aria-label="Clients">
+      <div className="client-marquee-head wrap">
         <span className="eyebrow">Trusted By</span>
-        <h2>Clients We Have Served</h2>
+        <h2>Our Clients</h2>
       </div>
-      <div className="clients-rail">
-        <div className="clients-track">
+      <div className="client-marquee-rail">
+        <div className="client-marquee-track">
           <ClientItems />
           <ClientItems hidden />
         </div>
