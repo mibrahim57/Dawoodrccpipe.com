@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 const heroVisibilityFix = `
 #hero .hero-left {
-  padding-top: 15.8rem !important;
+  padding-top: 17.4rem !important;
 }
 
 #hero .pill {
@@ -34,13 +34,13 @@ const heroVisibilityFix = `
 
 @media (max-width: 1080px) {
   #hero .hero-left {
-    padding-top: 15.6rem !important;
+    padding-top: 17rem !important;
   }
 }
 
 @media (max-width: 768px) {
   #hero .hero-left {
-    padding-top: 15.2rem !important;
+    padding-top: 16.2rem !important;
   }
 
   #hero .pill {

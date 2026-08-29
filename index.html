@@ -31,15 +31,16 @@ button{font-family:inherit;cursor:pointer;border:none}
 #prog{position:fixed;top:0;left:0;right:0;z-index:9999;height:2px;width:0;background:linear-gradient(90deg,var(--gd),var(--gl))}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:.3rem 3rem;background:#ffffff;box-shadow:0 2px 24px rgba(0,0,0,.10);transition:all .32s var(--ease);overflow:visible}
-nav.on{background:#ffffff;box-shadow:0 2px 28px rgba(0,0,0,.14);padding:.2rem 3rem}
-.logo{display:flex;align-items:center;gap:.7rem}
-.logo-icon{height:110px;width:110px;object-fit:cover;border-radius:12px;display:block;transition:height .3s,opacity .2s;flex-shrink:0;position:relative;z-index:901}
-.logo-text{display:flex;flex-direction:column}
-.lname{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-weight:700;color:#111111;display:block;line-height:1.2}
-.lsub{font-size:.58rem;color:rgba(43,45,51,.82);letter-spacing:.1em;text-transform:uppercase;font-weight:500}
-.logo:hover .logo-icon{opacity:.85}
-nav.on .logo-icon{height:90px;width:90px}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:.72rem 3.6rem;background:#ffffff;box-shadow:0 2px 24px rgba(0,0,0,.10);transition:all .32s var(--ease);overflow:visible}
+nav.on{background:#ffffff;box-shadow:0 2px 28px rgba(0,0,0,.14);padding:.48rem 3.6rem}
+.logo{display:flex;align-items:center;gap:1rem;min-width:0}
+.logo-icon{height:126px;width:126px;object-fit:contain;border-radius:0;display:block;transition:height .3s,width .3s,opacity .2s,transform .25s var(--ease);flex-shrink:0;position:relative;z-index:901;filter:drop-shadow(0 6px 10px rgba(0,0,0,.12))}
+.logo-text{display:flex;flex-direction:column;gap:.18rem;border-left:1px solid rgba(196,136,27,.26);padding-left:1rem}
+.lname{font-family:'Cormorant Garamond',serif;font-size:1.46rem;font-weight:700;color:#101116;display:block;line-height:1.04;letter-spacing:.01em}
+.lsub{font-size:.66rem;color:rgba(43,45,51,.78);letter-spacing:.15em;text-transform:uppercase;font-weight:700}
+.logo:hover .logo-icon{opacity:.9;transform:translateY(-1px)}
+nav.on .logo-icon{height:108px;width:108px}
+nav.on .lname{font-size:1.34rem}
 .nl{list-style:none;display:flex;align-items:center}
 .nl a{font-size:.77rem;font-weight:500;color:var(--dark);padding:.35rem .72rem;position:relative;transition:color .2s}
 .nl a::after{content:'';position:absolute;bottom:.15rem;left:.72rem;right:.72rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s}
@@ -330,7 +331,14 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
   .foot-g{grid-template-columns:1fr 1fr;gap:2rem}
 }
 @media(max-width:768px){
-  nav{padding:.9rem 1.4rem}nav.on{padding:.62rem 1.4rem}
+  nav{padding:.78rem 1.15rem}nav.on{padding:.58rem 1.15rem}
+  .logo{gap:.72rem}
+  .logo-icon{height:88px;width:88px}
+  nav.on .logo-icon{height:76px;width:76px}
+  .logo-text{gap:.12rem;padding-left:.72rem}
+  .lname{font-size:1.12rem}
+  nav.on .lname{font-size:1.04rem}
+  .lsub{font-size:.5rem;letter-spacing:.1em}
   .nl{display:none}.ham{display:flex}
   .wrap{padding:0 1.3rem}
   #hero{padding-top:142px;margin-top:-142px}
