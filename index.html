@@ -647,9 +647,7 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
     </div>
     <div class="con-g">
       <div class="rl">
-        <form name="quote-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="margin-top:1.4rem">
-          <input type="hidden" name="form-name" value="quote-request">
-          <input type="hidden" name="bot-field" style="display:none">
+        <form id="quote-form" name="quote-request" method="POST" action="https://formspree.io/f/maeyqeal" style="margin-top:1.4rem">
           <div class="frow">
             <div class="fg"><label>Full Name *</label><input class="finp" type="text" name="name" placeholder="Ahmed Khan" required></div>
             <div class="fg"><label>Company</label><input class="finp" type="text" name="company" placeholder="Your Organisation"></div>
@@ -843,7 +841,36 @@ function bgC(e,id){if(e.target===document.getElementById('m-'+id))closeM(id);}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.mbg.on').forEach(m=>{m.classList.remove('on');document.body.style.overflow='';});});
 
 /* ─── FORM ─── */
-function formSend(e){e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');e.target.reset();setTimeout(()=>t.classList.remove('show'),4500);}
+const quoteForm=document.getElementById('quote-form');
+if(quoteForm){
+  quoteForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    const form=e.currentTarget;
+    const toast=document.getElementById('toast');
+    const toastText=toast?.querySelector('span');
+    const submitButton=form.querySelector('button[type="submit"]');
+    const action=form.getAttribute('action');
+    if(submitButton)submitButton.disabled=true;
+
+    fetch(action,{
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:new FormData(form)
+    }).then(response=>{
+      if(!response.ok)throw new Error('Quote form submission failed');
+      if(toastText)toastText.textContent="Quote submitted! We'll respond within 24 hours.";
+      toast.classList.add('show');
+      form.reset();
+      setTimeout(()=>toast.classList.remove('show'),4500);
+    }).catch(()=>{
+      if(toastText)toastText.textContent='Could not send the quote request. Please try again or email us directly.';
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'),4500);
+    }).finally(()=>{
+      if(submitButton)submitButton.disabled=false;
+    });
+  });
+}
 
 /* ─── SMOOTH SCROLL ─── */
 bt?.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'});});
