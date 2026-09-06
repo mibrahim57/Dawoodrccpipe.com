@@ -150,3 +150,28 @@ body {
     width: 4px;
   }
 }
+
+@media (max-width: 430px) {
+  .client-marquee-section {
+    padding: 2.15rem 0 2rem;
+  }
+
+  .client-marquee-head h2 {
+    font-size: 1.9rem;
+  }
+
+  .client-marquee-rail::before,
+  .client-marquee-rail::after {
+    width: 34px;
+  }
+
+  .client-marquee-name {
+    font-size: 0.7rem;
+    letter-spacing: 0.018em;
+    min-height: 58px;
+  }
+
+  .client-marquee-name::after {
+    margin: 0 1rem;
+  }
+}
