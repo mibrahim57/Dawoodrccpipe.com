@@ -5,13 +5,18 @@ import "./globals.css";
 const contentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com",
+  "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' https://images.unsplash.com data:",
   "font-src 'self' https://fonts.gstatic.com",
   "connect-src 'self' https://formspree.io",
-  "form-action 'self' https://formspree.io",
+  "form-action https://formspree.io",
   "object-src 'none'",
-  "base-uri 'self'",
+  "base-uri 'none'",
+  "frame-src 'none'",
+  "media-src 'none'",
+  "worker-src 'none'",
+  "manifest-src 'self'",
   "upgrade-insecure-requests"
 ].join("; ");
 

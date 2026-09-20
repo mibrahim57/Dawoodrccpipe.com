@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dawood RCC Pipe | Pakistan's Infrastructure Since 1967</title>
 <meta name="description" content="Pakistan's most trusted RCC concrete pipe manufacturer. 57+ years, Karachi. NHA, WAPDA, CDA approved. Exporting to Middle East, Africa, Central Asia.">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://images.unsplash.com data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; object-src 'none'; base-uri 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' https://images.unsplash.com data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://formspree.io; form-action https://formspree.io; object-src 'none'; base-uri 'none'; frame-src 'none'; media-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -493,14 +493,14 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
     <li><a href="#clients">Our Clients</a></li>
   </ul>
   <a href="#contact" class="nq nav-cta">Get a Quote</a>
-  <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob" id="mob">
-  <a href="#about" onclick="closeMob()">About</a>
-  <a href="#products" onclick="closeMob()">Products</a>
-  <a href="#quality" onclick="closeMob()">Quality</a>
-  <a href="#clients" onclick="closeMob()">Our Clients</a>
-  <a href="#contact" onclick="closeMob()" style="color:var(--gold)">Get a Quote</a>
+  <a href="#about">About</a>
+  <a href="#products">Products</a>
+  <a href="#quality">Quality</a>
+  <a href="#clients">Our Clients</a>
+  <a href="#contact" style="color:var(--gold)">Get a Quote</a>
 </div>
 
 <!-- HERO -->
@@ -739,13 +739,14 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
     <div class="con-g">
       <div class="rl">
         <form id="quote-form" name="quote-request" method="POST" action="https://formspree.io/f/maeyqeal" style="margin-top:1.4rem">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
           <div class="frow">
-            <div class="fg"><label>Full Name *</label><input class="finp" type="text" name="name" placeholder="Ahmed Khan" required></div>
-            <div class="fg"><label>Company</label><input class="finp" type="text" name="company" placeholder="Your Organisation"></div>
+            <div class="fg"><label>Full Name *</label><input class="finp" type="text" name="name" placeholder="Ahmed Khan" maxlength="100" required></div>
+            <div class="fg"><label>Company</label><input class="finp" type="text" name="company" placeholder="Your Organisation" maxlength="150"></div>
           </div>
           <div class="frow">
-            <div class="fg"><label>Email Address *</label><input class="finp" type="email" name="email" placeholder="ahmed@company.pk" required></div>
-            <div class="fg"><label>Phone / WhatsApp *</label><input class="finp" type="tel" name="phone" placeholder="+92 300 000 0000" required></div>
+            <div class="fg"><label>Email Address *</label><input class="finp" type="email" name="email" placeholder="ahmed@company.pk" maxlength="254" required></div>
+            <div class="fg"><label>Phone / WhatsApp *</label><input class="finp" type="tel" name="phone" placeholder="+92 300 000 0000" maxlength="40" required></div>
           </div>
           <div class="fg">
             <label>Product Required</label>
@@ -761,10 +762,10 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
             </select>
           </div>
           <div class="frow">
-            <div class="fg"><label>Diameter Required</label><input class="finp" type="text" name="diameter" placeholder="e.g. 600mm, 1200mm"></div>
-            <div class="fg"><label>Quantity</label><input class="finp" type="text" name="quantity" placeholder="e.g. 500 pipes / 2km"></div>
+            <div class="fg"><label>Diameter Required</label><input class="finp" type="text" name="diameter" placeholder="e.g. 600mm, 1200mm" maxlength="80"></div>
+            <div class="fg"><label>Quantity</label><input class="finp" type="text" name="quantity" placeholder="e.g. 500 pipes / 2km" maxlength="80"></div>
           </div>
-          <div class="fg"><label>Project Details</label><textarea class="finp" name="message" placeholder="Project location, type, timeline, special specifications..."></textarea></div>
+          <div class="fg"><label>Project Details</label><textarea class="finp" name="message" placeholder="Project location, type, timeline, special specifications..." maxlength="3000"></textarea></div>
           <button type="submit" class="btn-sub">Submit Quote Request &rarr;</button>
         </form>
       </div>
@@ -909,6 +910,8 @@ window.addEventListener('scroll',()=>{
 /* ─── MOBILE NAV ─── */
 function toggleMob(){document.getElementById('ham').classList.toggle('x');document.getElementById('mob').classList.toggle('open');document.body.style.overflow=document.getElementById('mob').classList.contains('open')?'hidden':'';}
 function closeMob(){document.getElementById('ham').classList.remove('x');document.getElementById('mob').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('ham')?.addEventListener('click',toggleMob);
+document.querySelectorAll('#mob a').forEach(a=>a.addEventListener('click',closeMob));
 
 /* ─── SCROLL REVEAL ─── */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('go');}),{threshold:.1});
@@ -933,10 +936,61 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelect
 
 /* ─── FORM ─── */
 const quoteForm=document.getElementById('quote-form');
+let quoteSubmissionLocked=false;
 if(quoteForm){
+  const productSelect=quoteForm.elements.namedItem('product');
+  const allowedProductValues=new Set([...productSelect.options].map(option=>option.value));
+
+  function validateQuoteForm(form){
+    const fields=[...form.querySelectorAll('input,select,textarea')];
+    fields.forEach(field=>field.setCustomValidity(''));
+
+    const requiredTextFields=form.querySelectorAll('input[required],textarea[required]');
+    for(const field of requiredTextFields){
+      if(field.value.trim()===''){
+        field.setCustomValidity('Please enter a value.');
+        form.reportValidity();
+        return false;
+      }
+    }
+
+    for(const field of form.querySelectorAll('[maxlength]')){
+      const maximum=Number(field.getAttribute('maxlength'));
+      if(field.value.length>maximum){
+        field.setCustomValidity(`Please use ${maximum} characters or fewer.`);
+        form.reportValidity();
+        return false;
+      }
+    }
+
+    const email=form.elements.namedItem('email');
+    if(email.validity.typeMismatch){
+      email.setCustomValidity('Please enter a valid email address.');
+      form.reportValidity();
+      return false;
+    }
+
+    if(!allowedProductValues.has(productSelect.value)){
+      productSelect.setCustomValidity('Please select a valid product option.');
+      form.reportValidity();
+      return false;
+    }
+
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return false;
+    }
+    return true;
+  }
+
   quoteForm.addEventListener('submit',function(e){
     e.preventDefault();
     const form=e.currentTarget;
+    const honeypot=form.elements.namedItem('_gotcha');
+    if(honeypot.value!=='')return;
+    if(quoteSubmissionLocked||!validateQuoteForm(form))return;
+    quoteSubmissionLocked=true;
+
     const toast=document.getElementById('toast');
     const toastText=toast?.querySelector('span');
     const submitButton=form.querySelector('button[type="submit"]');
@@ -958,6 +1012,7 @@ if(quoteForm){
       toast.classList.add('show');
       setTimeout(()=>toast.classList.remove('show'),4500);
     }).finally(()=>{
+      quoteSubmissionLocked=false;
       if(submitButton)submitButton.disabled=false;
     });
   });
