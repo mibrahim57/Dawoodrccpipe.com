@@ -36,7 +36,7 @@ button{font-family:inherit;cursor:pointer;border:none}
 #prog{position:fixed;top:0;left:0;right:0;z-index:9999;height:2px;width:0;background:linear-gradient(90deg,var(--gd),var(--gl))}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:900;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.5rem clamp(1.15rem,3.5vw,3.4rem);background:#ffffff;box-shadow:0 2px 24px rgba(0,0,0,.10);transition:all .32s var(--ease);overflow:visible}
+nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:900;display:flex;align-items:center;gap:1rem;padding:.5rem clamp(1.15rem,3.5vw,3.4rem);background:#ffffff;box-shadow:0 2px 24px rgba(0,0,0,.10);transition:all .32s var(--ease);overflow:visible}
 nav.on{background:#ffffff;box-shadow:0 2px 28px rgba(0,0,0,.14);padding:.38rem clamp(1.15rem,3.5vw,3.4rem)}
 nav.measuring,nav.measuring *{transition:none!important}
 .logo{display:flex;align-items:center;gap:1rem;min-width:0}
@@ -47,12 +47,13 @@ nav.measuring,nav.measuring *{transition:none!important}
 .logo:hover .logo-icon{opacity:.9;transform:translateY(-1px)}
 nav.on .logo-icon{height:84px;width:84px}
 nav.on .lname{font-size:1.24rem}
-.nl{list-style:none;display:flex;align-items:center;justify-content:center;position:absolute;left:50%;transform:translateX(-50%);max-width:min(58vw,680px);min-width:0}
+.nl{list-style:none;display:flex;align-items:center;justify-content:center;position:absolute;left:50%;transform:translateX(-50%);min-width:0}
 .nl a{font-size:.92rem;font-weight:600;color:var(--dark);padding:.42rem .9rem;position:relative;transition:color .2s}
 .nl a::after{content:'';position:absolute;bottom:.15rem;left:.72rem;right:.72rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s}
 .nl a:hover,.nl a.a{color:var(--gold)}.nl a:hover::after,.nl a.a::after{transform:scaleX(1)}
 .nq{background:var(--gold)!important;color:#fff!important;font-weight:800!important;padding:.58rem 1.28rem!important;border-radius:7px!important}
 .nq::after{display:none!important}.nq:hover{opacity:.85!important}
+.nav-cta{margin-left:auto;white-space:nowrap}
 .ham{display:none;flex-direction:column;gap:5px;background:none;padding:.28rem}
 .ham span{display:block;width:21px;height:2px;background:var(--dark);border-radius:2px;transition:all .27s}
 .ham.x span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -381,7 +382,8 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
   .lname{font-size:1.12rem}
   nav.on .lname{font-size:1.04rem}
   .lsub{font-size:.5rem;letter-spacing:.1em}
-  .nl{display:none;position:static;transform:none}.ham{display:flex}
+  nav{display:flex;justify-content:space-between}
+  .nl,.nav-cta{display:none}.ham{display:flex}
   .wrap{padding:0 1.3rem}
   .hero-left{padding:3.8rem 1.3rem 2.4rem}.hero-right{height:340px}.pipe-box{width:80%;height:72%}.pill{max-width:100%;padding:.68rem 1rem}.pill span{font-size:.78rem;letter-spacing:.055em}.h1{font-size:2.7rem}
   .hstats{flex-wrap:wrap}
@@ -489,8 +491,8 @@ footer{background:var(--dark);border-top:1px solid var(--dbdr);padding:3.8rem 0 
     <li><a href="#products">Products</a></li>
     <li><a href="#quality">Quality</a></li>
     <li><a href="#clients">Our Clients</a></li>
-    <li><a href="#contact" class="nq">Get a Quote</a></li>
   </ul>
+  <a href="#contact" class="nq nav-cta">Get a Quote</a>
   <button class="ham" id="ham" onclick="toggleMob()"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob" id="mob">
