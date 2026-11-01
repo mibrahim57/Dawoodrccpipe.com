@@ -25,8 +25,11 @@ const threeJsIntegrity =
 
 export const metadata: Metadata = {
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png", sizes: "32x32" }],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }]
+    icon: [
+      { url: "/favicon-v2.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon.svg", type: "image/svg+xml", sizes: "any" }
+    ],
+    apple: [{ url: "/apple-touch-icon-v2.png", sizes: "180x180" }]
   },
   title: "Dawood RCC Pipe | Pakistan's Infrastructure Since 1967",
   description:
