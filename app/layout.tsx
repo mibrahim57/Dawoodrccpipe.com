@@ -24,6 +24,10 @@ const threeJsIntegrity =
   "sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }]
+  },
   title: "Dawood RCC Pipe | Pakistan's Infrastructure Since 1967",
   description:
     "Pakistan's most trusted RCC concrete pipe manufacturer. 57+ years, Karachi. NHA, WAPDA, CDA approved. Exporting to Middle East, Africa, Central Asia."
